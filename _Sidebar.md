@@ -6,3 +6,4 @@
 * [Azure DevOps](Home#AzureDevOps)
   * [How to configure Azure DevOps](How-to-configure-Azure-DevOps)
   * [Setting up a Azure DevOps Pipeline](Setting-up-Azure-DevOps-pipeline)
+  * [Customizing the Azure DevOps pipeline](Customizing-AzureDevOps)
