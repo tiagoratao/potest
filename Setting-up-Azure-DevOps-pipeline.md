@@ -148,7 +148,7 @@ Since Azure DevOps' Python tasks don't support Python Environments, we need to w
 
 #### Task
 
-* Use: 
+* Use:
   * **Publish Test Results**
     * Test result format: `JUnit`
     * Test results files: `**/junit-result.xml`
