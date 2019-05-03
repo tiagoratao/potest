@@ -268,3 +268,26 @@ Press the button and the pipeline will be lauched on Jenkins.
 On the Jenkins dashboard, click **New Item**. Set the **Name** and use the **Copy from** to copy from another pipeline. Then click OK.
 
 Change the values for all the parameters, to match your application details. Press save to generate the pipeline.
+
+## Artifacts and Results
+
+With the execution of the pipeline, several artifacts might be created. You can access them through Jenkins and they provide a vision to what Jenkins "saw" at the time it ran. Next is a description of those files:
+
+- application_data
+  - \<app_name>.versions.cache - contains the details about the version of the \<app_name> application, in JSON format.
+- bdd_data
+  - test.endpoints.cache - contains the BDD Tests endpoints, in JSON format.
+- cicd_probe_data
+  - \<app_name>.probe.cache - contains the information recovered by the probe on the \<app_name> application, in JSON format.
+- deployment_data
+  - \<deployment_key>.status.cache - contains the deployment plan  with the \<deployment_key>, execution log in JSON format.
+  - \<deployment_key>.cache - contains the deployment plan, with the \<deployment_key>, information in JSON format.
+- environment_data
+  - \<environment_name>.\<app_name>.cache - contains the information of the \<app_name> application in the \<environment_name>, in JSON format.
+- applications.cache - contains the information of all applications in the factory, in JSON format.
+- environments.cache - contains the information of all the environments that make up the factory, in JSON format.
+- DeploymentConflicts - contains the conflicts in the deployment, that led to LifeTime aborting it, in JSON format. It will only be created if the pipeline aborts due to Deployment Conflicts.
+
+The pipeline will turn green if all the tests pass and if the deployment is successful.
+
+The pipeline will turn yellow if the any test fail, leading it to becoming an unstable build and aborting after the current stage is complete (normaly the testing stage).
