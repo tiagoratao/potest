@@ -6,6 +6,7 @@
 
 - [How to configure Jenkins](How-to-configure-Jenkins)
 - [Setting up a Jenkins Pipeline](Setting-up-Jenkins-pipeline)
+- [Customizing your Jenkinsfile](Customizing-Jenkinsfile)
 
 **Azure DevOps:**
 
