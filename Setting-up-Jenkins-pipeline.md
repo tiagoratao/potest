@@ -68,13 +68,13 @@ On Jenkins, under **Credentials**, create a new credential, similar to the LifeT
 
 The OutSystems Forge link for [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/trigger-pipeline), where you can download it.
 
-You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community) on how to install in your **LifeTime** environment. Note: you only need to install it, you don't need to manage the dependencies.
+You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community), or [lab](https://www.outsystems.com/learn/lesson/1687/install-a-forge-component/?LearningPathId=0), on how to install in your **LifeTime** environment. Note: you only need to install it, you don't need to manage the dependencies.
 
 ### Installing the CICD Probe and BDD Framework
 
 The OutSystems Forge URL for [BDD Framework](https://www.outsystems.com/forge/component-overview/1201/bddframework) and [CICD Probe](https://TODO), where you can download them.
 
-You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community) on how to install in your **Regression** environment. Note: you only need to install it, you don't need to manage the dependencies.
+You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community), or [lab](https://www.outsystems.com/learn/lesson/1687/install-a-forge-component/?LearningPathId=0), on how to install in your **Regression** environment. Note: you only need to install it, you don't need to manage the dependencies.
 
 ## Creating the pipeline
 
