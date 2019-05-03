@@ -83,19 +83,19 @@ Install URL Rewrite and Application Request Routing. You should have downloaded 
 
 In the Internet Information Services (IIS) Manager, click on the *\<hostname>* server. Go to **Application Request Routing Cache** and, in the Actions panel, click on **Server Proxy Settings...**. Enable the proxy and disable the reverse rewrite host in the response header. Apply the configs.
 
-![alt text](images\arrc_img.png "Application Request Routing")
+![alt text](images/arrc_img.png "Application Request Routing")
 
 Configure the SSL Bindings by going to *\<hostname>* server, click Sites and select **Default Web Site**. On the Actions panel, under Edit Site, click on **Bindings...**. Add the HTTPS port with the certificate you previously installed.
 
-![alt text](images\certificate.png "Certificate binding")
+![alt text](images/certificate.png "Certificate binding")
 
 Click ok. You should see both HTTP and HTTPS bindings:
 
-![alt text](images\bindings.png "Bindings")
+![alt text](images/bindings.png "Bindings")
 
 Open the Jenkins configuration page (<http://jenkins-hostname/configure>) and change the Jenkins URL to <https://jenkins-hostname/> if you didn't do it during the installation.
 
-![alt text](images\https_hostname.png "Hostnames")
+![alt text](images/https_hostname.png "Hostnames")
 
 Go to **Configure Global Security** and enable **Enable proxy compatibility** if you have already enabled **Prevent Cross Site Request Forgery exploits**.
 
@@ -103,19 +103,19 @@ Go to Manage (<https://jenkins-hostname/manage>) and you'll see a banner **"It a
 
 On IIS Manager, go to **Application Pools** then edit **DefaultAppPool** so that the .NET CLR version is **No Managed Code** (Right-click, select **Basic Setttings...** and change it):
 
-![alt text](images\app_pool.png "App Pool .NET")
+![alt text](images/app_pool.png "App Pool .NET")
 
 Go to Sites, Default Web Site, Request Filtering. In the Actions panel choose **Edit Feature Settings...** and turn on **Allow double escaping**:
 
-![alt text](images\request_filtering.png "Request Filtering settings")
+![alt text](images/request_filtering.png "Request Filtering settings")
 
 Go to Sites, Default Web Site, Configuration Editor and change the Section to **system.webServer/rewrite/rules**:
 
-![alt text](images\rewrite_rules.png "Rewrite rules settings")
+![alt text](images/rewrite_rules.png "Rewrite rules settings")
 
 Change **useOriginalURLEncoding** to *False* (if you don't see it, you forgot to install URL Rewrite 2.1):
 
-![alt text](images\rewrite_rules.png "Rewrite rules settings")
+![alt text](images/rewrite_rules.png "Rewrite rules settings")
 
 And that should be it. You can now use the https to access Jenkins.
 
