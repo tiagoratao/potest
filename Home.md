@@ -1,4 +1,4 @@
-# OutSystems Regression Testing Pipeline Wiki
+# OutSystems Pipeline Wiki
 
 ## Table of contents
 
