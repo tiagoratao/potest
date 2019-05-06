@@ -2,7 +2,7 @@
 
 This document will go through the basics of setting up a Pipeline in Jenkins for your OutSystems applications. You're free to customize and alter it after it or extend it as you see fit.
 
-This pipeline assumes you use 5 Environments: Development, Regression, Quality Assurance, Pre-Production and Production.
+We provide 2 examples of Jenkinsfile, one with 5 environments (Development, Regression, Quality Assurance, Pre-Production and Production) that will be described here and another with 3 environments (Development, Regression, Production). If none of this fit your factory please see the [Customizing Jenkinsfile](Customizing-Jenkinsfile) for more details on how to tweak your Jenkinsfile.
 
 If you don't have as many environments, you can trim the parameters (and the Jenkinsfile) to suit your environment size. The major requirements are 3 environments: 1 DEV environment, 1 Regression environment, 1 Quality Assurance / Production. We recommend 5, to allow for other test cycles to be plugged to the pipeline as well.
 
