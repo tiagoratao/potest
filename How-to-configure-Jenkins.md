@@ -15,7 +15,7 @@ This are the following system requirements we used internally to run our Jenkins
 ### Operating Systems
 
 - Windows Server 2016
-- \<TODO> Linux
+- Ubuntu 18.04 LTS
 
 ### Virtual Machine
 
@@ -49,25 +49,80 @@ You need to open communication on the following ports / hosts:
 
 ## Jenkins installation
 
-Download Jenkins [here](https://jenkins.io/download/). We use LTS versions of Jenkins, to provide a more stable environment. Version used was Jenkins 2.x.
-
 ### Windows
+
+Download Jenkins [here](https://jenkins.io/download/). We use LTS versions of Jenkins, to provide a more stable environment. Version used was Jenkins 2.x.
 
 Run the installer and follow the instructions. Use the Data disk as target for the installation.
 
 ### Linux
 
-\<TODO>
+To install Jenkins you need to run the following commands:
+
+~~~~bash
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+sudo sh -c 'echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt update
+sudo apt install -y jenkins
+~~~~
+
+It's advised to use the Data disk for the Jenkins Home. Make sure the volume is formated and mounted automatically on boot. After this, make sure there's a folder inside the disk and that the owner is the `jenkins` user.
+
+~~~~bash
+# Format the second disk as ext4. Note: your volume name may be different!!
+sudo mkfs.ext4 /dev/xvdb
+
+# Make a directory for the mountpoint
+sudo mkdir /data
+
+# Get the block device ID. Copy the line for the data volume (e.g. xvdb)
+sudo blkid
+
+# The output should be similar to this:
+#/dev/xvda1: LABEL="cloudimg-rootfs" UUID="a35c0336-90dc-4445-a988-b60872c987a7" TYPE="ext4" PARTUUID="9820e40e-01"
+#/dev/loop0: TYPE="squashfs"
+#/dev/loop1: TYPE="squashfs"
+#/dev/xvdb: UUID="3c55800d-d84e-4032-a473-988f453ad61e" TYPE="ext4"  <<< this is the UUID we want
+
+# Edit the Fstab to mount the disk on boot
+sudo cp /etc/fstab /etc/fstab.orig
+sudo vi /etc/fstab
+
+# Add a line with the new volume
+# Example:
+# UUID=3c55800d-d84e-4032-a473-988f453ad61e       /data   ext4    defaults,nofail 0       2
+
+# Test the mount point
+sudo mount -a
+
+# See the block devices
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+~~~~
+
+To change the home directory do:
+
+~~~~bash
+# Edit the defaults for Jenkins
+sudo vi /etc/default/jenkins
+
+# Locate JENKINS_HOME (around line 23) and change it to your mount point/dir
+JENKINS_HOME=/data/jenkins
+
+# Restart jenkins
+sudo systemctl restart jenkins
+~~~~
 
 ## Jenkins configuration
 
 ### Reverse proxy and HTTPS
 
-The configuration for the proxy was adapted from [here](https://wiki.jenkins.io/display/JENKINS/Running+Jenkins+behind+IIS).
-
 This step is optional. If you want to have Jenkins being accessible through HTTPS, you'll need to configure a reverse proxy with a certificate. The certificate generation for the hostname is left to you. Next we will describe how to install the reverse proxy on the Jenkins machine.
 
 #### Windows - IIS
+
+The configuration for the proxy was adapted from [here](https://wiki.jenkins.io/display/JENKINS/Running+Jenkins+behind+IIS).
 
 ##### Requirements
 
@@ -119,7 +174,81 @@ Change **useOriginalURLEncoding** to *False* (if you don't see it, you forgot to
 
 And that should be it. You can now use the https to access Jenkins.
 
-#### Linux - TODO
+#### Linux - Nginx
+
+To install Nginx run `sudo apt install -y nginx`. Once it finishes installing, you will need to configure the site configuration for Jenkins. Next we will detail how to create a site configuration:
+
+~~~~bash
+cd /etc/nginx/sites-available
+sudo touch jenkins
+cd ../sites-enabled
+sudo ln -s ../sites-available/jenkins jenkins
+sudo rm default ../site-available/default
+~~~~
+
+This will create the Jenkins site configuration and the soft link to enable that configuration. It will also delete Nginx's default configuration. Next, add the following configuration to the site configuration:
+
+`sudo vi jenkins`
+
+~~~~bash
+upstream app_server {
+    server  127.0.0.1:8080  fail_timeout=0;
+}
+
+# HTTP server configuration
+#
+server {
+    server_name <DNS_NAME> www.<DNS_NAME>;
+    listen 80;
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS server configuration
+#
+server {
+    server_name <DNS_NAME> www.<DNS_NAME>;
+
+    listen 443 ssl;
+
+    # SSL configuration
+    #
+    ssl_certificate /etc/nginx/ssl/server.crt;
+    ssl_certificate_key     /etc/nginx/ssl/server.key;
+
+    # Log configuration
+    #
+    access_log      /var/log/nginx/jenkins.access.log;
+    error_log       /var/log/nginx/jenkins.error.log;
+
+    # Proxy configuration
+    location / {
+        include /etc/nginx/proxy_params;
+        proxy_pass      http://app_server;
+        proxy_read_timeout      90s;
+        proxy_redirect  http://localhost:8080   https://$server_name;
+    }
+}
+~~~~
+
+Replace `<DNS_NAME>` with you hostname of your Jenkins (e.g. example.net).
+
+Run `sudo nginx -t` to test if the configuration. If it returns the following output it means the configuration is correct:
+
+~~~~bash
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+~~~~
+
+**Note:** It's assumed that you generated a server.key (without passphrase) and server.crt with the private key and certificate (respectively) on the `ssl` folder inside Nginx (you might have to create it too). If you have your cryptographic material somewhere else, point it to the corret directory / file. If you don't want to use a key without passphrase, look up on how to use a [ssl_passowrd_file](https://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_password_file).
+
+Restart Nginx and Jenkins to refresh the configurations:
+
+~~~~bash
+sudo systemctl restart nginx
+sudo systemctl restart jenkins
+~~~~
+
+If you didn't set up the hostname in the installation, you have to do it now. Log in to Jenkins and go to **Manage Jenkins** > **Configure System** > **Jenkins Location**. Set the **Jenkins URL** with the new URL you set up on Nginx. Remember to use HTTPS to access Jenkins.
 
 ### Plugins & Extra software
 
@@ -139,8 +268,15 @@ To install plugins, just type the name on the **Available Plugins**, under **Man
   - Linux: should be installed by default, if not use the default package repos
 - Python 3.X:
   - Windows: (tested with 3.7.1) <https://www.python.org/downloads/release/python-371/>
-  - Linux: \<TODO>
-- Pip: [install guide](https://pip.pypa.io/en/stable/installing/)
+  - Linux:
+    - Python 3.X should be already installed. By default Ubuntu comes with Python 3.6.X
+- Pip:
+  - Windows: [install guide](https://pip.pypa.io/en/stable/installing/)
+  - Linux: run:
+
+    ~~~~bash
+    sudo apt install -y python3-pip
+    ~~~~
 
 Python on Windows:
 
