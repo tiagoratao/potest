@@ -57,18 +57,7 @@ Run the installer and follow the instructions. Use the Data disk as target for t
 
 ### Linux
 
-To install Jenkins you need to run the following commands:
-
-~~~~bash
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-
-sudo sh -c 'echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list.d/jenkins.list'
-
-sudo apt update
-sudo apt install -y jenkins
-~~~~
-
-It's advised to use the Data disk for the Jenkins Home. Make sure the volume is formated and mounted automatically on boot. After this, make sure there's a folder inside the disk and that the owner is the `jenkins` user.
+**Optional:** It's advised to use the Data disk for the Jenkins Home. Make sure the volume is formated and mounted automatically on boot. After this, make sure there's a folder inside the disk and that the owner is the `jenkins` user.
 
 ~~~~bash
 # Format the second disk as ext4. Note: your volume name may be different!!
@@ -99,6 +88,17 @@ sudo mount -a
 
 # See the block devices
 sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+~~~~
+
+To install Jenkins you need to run the following commands:
+
+~~~~bash
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+sudo sh -c 'echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list.d/jenkins.list'
+
+sudo apt update
+sudo apt install -y jenkins
 ~~~~
 
 To change the home directory do:
