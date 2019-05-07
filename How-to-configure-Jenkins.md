@@ -239,7 +239,20 @@ nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ~~~~
 
-**Note:** It's assumed that you generated a server.key (without passphrase) and server.crt with the private key and certificate (respectively) on the `ssl` folder inside Nginx (you might have to create it too). If you have your cryptographic material somewhere else, point it to the corret directory / file. If you don't want to use a key without passphrase, look up on how to use a [ssl_passowrd_file](https://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_password_file).
+**Note:** It's assumed that you generated a server.key (without passphrase) and server.crt with the private key and certificate (respectively) on the `ssl` folder inside Nginx (you might have to create it too). If you have your cryptographic material somewhere else, point it to the corret directory / file. If you don't want to use a key without passphrase, look up on how to use a [ssl_password_file](https://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_password_file).
+
+**Extra:** To generate a server key from a `.pfx`, you can do:
+
+~~~~bash
+# Extract the private key (you will be prompted to insert the password and a new passphrase)
+openssl pkcs12 -in <yourfile.pfx> -nocerts -out <keyfile-encrypted.key>
+
+# Either run this command to remove the passphrase or use a ssl_password_file
+openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>
+
+# Extract the certificate
+openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>
+~~~~
 
 Restart Nginx and Jenkins to refresh the configurations:
 
