@@ -254,6 +254,16 @@ openssl rsa -in <keyfile-encrypted.key> -out <keyfile-decrypted.key>
 openssl pkcs12 -in <yourfile.pfx> -clcerts -nokeys -out <certificate.crt>
 ~~~~
 
+You will also need to make sure Jenkins is not being accessed without passing through the Nginx Proxy. To do that, you need to change the Listen Address on Jenkins.
+
+~~~~bash
+sudo  vi /etc/default/jenkins
+~~~~
+
+Locate the line containing JENKINS_ARGS. It should be the last line of the file. Change it's value to this:
+
+`JENKINS_ARGS="--webroot=/var/cache/$NAME/war --httpListenAddress=127.0.0.1 --httpPort=$HTTP_PORT"`
+
 Restart Nginx and Jenkins to refresh the configurations:
 
 ~~~~bash
