@@ -293,6 +293,7 @@ To install plugins, just type the name on the **Available Plugins**, under **Man
   - Windows: (tested with 3.7.1) <https://www.python.org/downloads/release/python-371/>
   - Linux:
     - Python 3.X should be already installed. By default Ubuntu comes with Python 3.6.X
+    - You will need to install the python3 venv: `sudo apt install -y python3-venv`
 - Pip:
   - Windows: [install guide](https://pip.pypa.io/en/stable/installing/)
   - Linux: run:
