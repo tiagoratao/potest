@@ -77,7 +77,7 @@ Before you start using the Slack package, you'll need to configure the following
 
 ----------
 
-For more information on how to create a Slack Web Hook see the [documentation](https://api.slack.com/incoming-webhooks) and / or use the [app](https://outsystems.slack.com/apps/A0F7XDUAZ-incoming-webhooks?next_id=0).
+For more information on how to create a Slack Web Hook see the [documentation](https://api.slack.com/incoming-webhooks) and / or use the [app](https://<your_org>.slack.com/apps/A0F7XDUAZ-incoming-webhooks).
 
 Refer back to [Creating the Authentication Token for LifeTime](Setting-up-Jenkins-pipeline#creating-the-authentication-token-for-lifetime) for more information on how to create a credential on Jenkins.
 
