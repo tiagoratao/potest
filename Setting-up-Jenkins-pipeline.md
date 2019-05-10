@@ -274,7 +274,8 @@ Change the values for all the parameters, to match your application details. Pre
 With the execution of the pipeline, several artifacts might be created. You can access them through Jenkins and they provide a vision to what Jenkins "saw" at the time it ran. Next is a description of those files:
 
 - application_data
-  - \<app_name>.versions.cache - contains the details about the version of the \<app_name> application, in JSON format.
+  - \<app_name>.versions.cache - contains a list of all the versions of the \<app_name> application, in JSON format.
+  - \<app_name>.\<version>.version.cache - contains the details about a specific version of the \<app_name> application, in JSON format.
 - bdd_data
   - test.endpoints.cache - contains the BDD Tests endpoints, in JSON format.
 - cicd_probe_data
