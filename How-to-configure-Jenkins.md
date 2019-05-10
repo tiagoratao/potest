@@ -279,8 +279,8 @@ To install plugins, just type the name on the **Available Plugins**, under **Man
 
 #### Jenkins standard plugins
 
-- BlueOcean: <https://wiki.jenkins.io/display/JENKINS/Blue+Ocean+Plugin>
-- Build Authorization Token Root: <https://wiki.jenkins.io/display/JENKINS/Build+Token+Root+Plugin>
+- (Optional) BlueOcean: <https://wiki.jenkins.io/display/JENKINS/Blue+Ocean+Plugin>
+- (If you're not using local users) Build Authorization Token Root: <https://wiki.jenkins.io/display/JENKINS/Build+Token+Root+Plugin>
 - JUnit: <https://wiki.jenkins.io/display/JENKINS/JUnit+Plugin>
 - Pyenv Pipeline: <https://wiki.jenkins.io/display/JENKINS/Pyenv+Pipeline+Plugin>
 
