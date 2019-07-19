@@ -1,12 +1,12 @@
 # Setting up a Jenkins pipeline
 
-This document will go through the basics of setting up a Pipeline in Jenkins for your OutSystems applications. You're free to customize and alter it after it or extend it as you see fit.
+This document will go through the basics of setting up a Pipeline in Jenkins for your OutSystems applications. You're free to customize, alter or extend it as you see fit.
 
-We provide 2 examples of Jenkinsfile, one with 5 environments (Development, Regression, Quality Assurance, Pre-Production and Production) that will be described here and another with 3 environments (Development, Regression, Production). If none of this fit your factory please see the [Customizing Jenkinsfile](Customizing-Jenkinsfile) for more details on how to tweak your Jenkinsfile.
+We provide 2 examples of Jenkinsfile, one with 5 environments (Development, Regression, Quality Assurance, Pre-Production and Production) that will be described here and another with 3 environments (Development, Regression, Production). If none of this fits your factory please see the [Customizing Jenkinsfile](Customizing-Jenkinsfile) for more details on how to tweak your Jenkinsfile.
 
-If you don't have as many environments, you can trim the parameters (and the Jenkinsfile) to suit your environment size. The major requirements are 3 environments: 1 DEV environment, 1 Regression environment, 1 Quality Assurance / Production. We recommend 5, to allow for other test cycles to be plugged to the pipeline as well.
+The major requirements are 3 environments: 1 DEV environment, 1 Regression environment, 1 Quality Assurance / Production. We recommend 5, to allow for other test cycles (UI, acceptance or smoke testing) to be plugged to the pipeline as well.
 
-We also chose to use parameterized builds in order to have more flexibility on the pipelines. This means we can have a single Jenkinsfile for all the pipelines but also tune it based on the parameters. It will also allow for the OutSystems LifeTime trigger plugin to trigger pipelines with LifeTime information about the apps to deploy. Although the initial setup is higher, future pipelines can be created by cloning from one existing one and changing the parameter values.
+We chose to use parameterized pipelines in order to have more flexibility and reusability. This means we can have a single Jenkinsfile for all the pipelines and tune it to the application list based on the parameters. It will also allow for the OutSystems LifeTime Trigger plugin to trigger pipelines with information from LifeTime about the apps to deploy. Although the initial setup is higher, future pipelines can be created by cloning from an existing one and changing the parameter values.
 
 You can, of course, customize the Jenkinsfile to have hardcoded values and ignore the pipeline parameterization, creating one Jenkinsfile per pipeline and use your code repository to control Jenkinsfile's versioning and branching.
 
@@ -18,9 +18,7 @@ To automate the interaction between Jenkins and OutSystems LifeTime you'll need 
 
 Press the **New Service Account** link under Service Accounts. Name it something you recognize. The username can be anything, since it won't be used.
 
-Select a role that is able to deploy to all the environments you plan on extending the pipeline. It needs **Change & Deploy** in those environments.
-
-Press create and save the token it will generate.
+Select a role that is able to deploy to all the environments you plan on extending the pipeline. It needs **Change & Deploy** in those environments. Press create and save the token generated.
 
 On Jenkins, go to the **Credentials** menu and add a new credential to the domain you want (e.g. Global credentials). The credentials you're going to add will have the following format:
 
@@ -39,7 +37,7 @@ On Jenkins, go to the **Credentials** menu and add a new credential to the domai
 
 ### Creating GIT repository for Jenkinsfile
 
-You will want to create a repository to store your custom Jenkinsfile. In this documentation we will use GitHub but you can use any SCM provided you know how to use it.
+You will want to create a repository to store your custom Jenkinsfile. In this documentation we will use GitHub but you can use any SCM.
 
 After you create the repository and commit the Jenkinsfile, you'll need to create an access key so that Jenkins can clone the repository. This is needed if your repository is not public.
 
@@ -68,11 +66,11 @@ On Jenkins, under **Credentials**, create a new credential, similar to the LifeT
 
 The OutSystems Forge link for [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/trigger-pipeline), where you can download it.
 
-You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community), or [lab](https://www.outsystems.com/learn/lesson/1687/install-a-forge-component/?LearningPathId=0), on how to install in your **LifeTime** environment. Note: you only need to install it, you don't need to manage the dependencies.
+You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community), or [lab](https://www.outsystems.com/learn/lesson/1687/install-a-forge-component/?LearningPathId=0), on how to install in your **LifeTime** environment.
 
 ### Installing the CICD Probe and BDD Framework
 
-The OutSystems Forge URL for [BDD Framework](https://www.outsystems.com/forge/component-overview/1201/bddframework) and [CICD Probe](https://TODO), where you can download them.
+The OutSystems Forge URL for [BDD Framework](https://www.outsystems.com/forge/component-overview/1201/bddframework) and [CICD Probe](https://github.com/OutSystems/outsystems-pipeline/raw/master/outsystems_components/regression_environment/CICD%20Probe.oap), where you can download them.
 
 You can follow this [guide](https://success.outsystems.com/Documentation/11/Getting_Started/Use_a_Forge_Component_Made_by_the_Community), or [lab](https://www.outsystems.com/learn/lesson/1687/install-a-forge-component/?LearningPathId=0), on how to install in your **Regression** environment. Note: you only need to install it, you don't need to manage the dependencies.
 
@@ -82,7 +80,7 @@ Access to your Jenkins platform and, on the left menu, select **New Item**.
 
 ![New Item](images/new_item.png)
 
-A window will appear. Choose a name for the pipeline. You can you other types of pipeline if you feel more confortable but since the goal here is simplicity, we will use the **Pipeline** type. Then click OK
+A window will appear. Choose a name for the pipeline. You can you other types of pipeline if you feel more confortable but, since the goal here is simplicity, we will use the **Pipeline** type. Then click OK.
 
 ![Pipeline Type](images/pipeline_type.png)
 
@@ -259,7 +257,7 @@ Press **save** and the pipeline will be saved and the configuration is complete.
 
 ## Running the pipeline
 
-To run the pipeline, you only need to [tag the applications](https://success.outsystems.com/Documentation/11/Managing_the_Applications_Lifecycle/Deploy_Applications/Tag_a_Version), on OutSystems LifeTime, you want to deploy, then go to the Trigger Plugin and press the **Trigger Pipeline** button. This button will only be available if you have applications ready to be deployed. If not it will be grayed out.
+To run the pipeline, you only need to [tag the applications](https://success.outsystems.com/Documentation/11/Managing_the_Applications_Lifecycle/Deploy_Applications/Tag_a_Version), on OutSystems LifeTime, you want to deploy, then go to the Trigger Plugin and press the **Trigger Pipeline** button. This button will only be available if you have applications ready to be deployed. If not it will be grayed out or not there.
 
 Press the button and the pipeline will be lauched on Jenkins.
 
@@ -271,7 +269,7 @@ Change the values for all the parameters, to match your application details. Pre
 
 ## Artifacts and Results
 
-With the execution of the pipeline, several artifacts might be created. You can access them through Jenkins and they provide a vision to what Jenkins "saw" at the time it ran. Next is a description of those files:
+With the execution of the pipeline, several artifacts will be created, depending on where the pipeline finished. You can access them through Jenkins and they provide a snapshot to the status Jenkins "saw" at the time it ran. Next is a description of those files:
 
 - application_data
   - \<app_name>.versions.cache - contains a list of all the versions of the \<app_name> application, in JSON format.
@@ -292,3 +290,5 @@ With the execution of the pipeline, several artifacts might be created. You can 
 The pipeline will turn green if all the tests pass and if the deployment is successful.
 
 The pipeline will turn yellow if the any test fail, leading it to becoming an unstable build and aborting after the current stage is complete (normaly the testing stage).
+
+If it turns red, it means there was an error in the pipeline code itself.
