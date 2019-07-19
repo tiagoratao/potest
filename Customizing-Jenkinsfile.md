@@ -2,14 +2,14 @@
 
 ## Adding one environment
 
-On the Jenkinsfile, one environment corresponds to a Stage in the pipeline. The stages have the following configuration:
+On the Jenkinsfile, one environment corresponds to a Stage in the pipeline, for simplicity's sake. The stages have the following configuration:
 
 ~~~~~groovy
 stage('Deploy to <EnvironmentName> Environment') {
     steps {
         withPythonEnv('python') {
             echo 'Deploying latest application tags to <EnvironmentName>...'
-            powershell "python .\\outsystems\\pipeline\\deploy_latest_tags_to_target_env.py --artifacts \"${env.ArtifactsFolder}\" --lt_url ${env.LifeTimeEnvironmentURL} --lt_token ${env.AuthorizationToken} --lt_api_version ${env.LifeTimeAPIVersion} --source_env \"<SRC_ENV_NAME_PARAM>\" --destination_env \"<DEST_ENV_NAME_PARAM>\" --app_list \"${params.AppScope}\""
+            powershell "python outsystems-pipeline.pipeline.deploy_latest_tags_to_target_env.py --artifacts \"${env.ArtifactsFolder}\" --lt_url ${env.LifeTimeEnvironmentURL} --lt_token ${env.AuthorizationToken} --lt_api_version ${env.LifeTimeAPIVersion} --source_env \"<SRC_ENV_NAME_PARAM>\" --destination_env \"<DEST_ENV_NAME_PARAM>\" --app_list \"${params.AppScope}\""
         }
     }
     post {
@@ -48,7 +48,7 @@ The file archiving allows us to see the files on the job executions, on Jenkins.
 
 ## Using the Slack package
 
-**Important:** Please note that the Slack Package is not included with the OutSystems Python package. You'll need to add it to your personal Git repository.
+**Important:** Please note that the Slack Package is not included with the OutSystems Python package. You'll need to add it to your personal Git repository, by cloning that part of the repo.
 
 Before you start using the Slack package, you'll need to configure the following parameters on your pipeline:
 
