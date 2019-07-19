@@ -1,8 +1,7 @@
 # Customizing the Azure DevOps pipeline
 
-\<TODO>
-
-## Adding one environment
+[//]: # (TODO complete)
+[//]: ## (Adding one environment)
 
 ## Adding the Slack package
 
@@ -14,6 +13,7 @@
     * Script Path: `$(System.DefaultWorkingDirectory)/$(Release.PrimaryArtifactSourceAlias)/cd_pipelines/azure_devops/send_notifications_slack.sh`
     * Arguments: `-e "$(PythonEnvName)" -a "$(ArtifactsFolder)" -s $(SlackHook) -c "$(SlackChannels)" -p "$(PipelineType)" -j "$(JobName)" -d $(DashBoardUrl)`
     * Working Directory: `$(Release.PrimaryArtifactSourceAlias)`
+
   * Windows:
     * Script Path: `$(System.DefaultWorkingDirectory)/$(Release.PrimaryArtifactSourceAlias)/cd_pipelines/azure_devops/send_notifications_slack.ps1`
     * Arguments: `-PythonEnv "$(PythonEnvName)" -ArtifactDir "$(ArtifactsFolder)" -SlackHook $(SlackHook) -SlackChannels "$(SlackChannels)" -PipelineType "$(PipelineType)" -JobName "$(JobName)" -DashboardUrl $(DashBoardUrl)`
