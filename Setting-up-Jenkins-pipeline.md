@@ -103,7 +103,7 @@ Click on the **Add Parameter** and select the parameter type based on the follow
 
 **Type:** String
 
-**Default Value:** <App name or comma separated list of apps to deploy, without the tests>
+**Default Value:** \<App name or comma separated list of apps to deploy, without the tests>
 
 **Description:** Name of the App(s) without the tests, to deploy. If you add more than one, use a comma to separate them. Example: App1,App2 With Spaces,App3_With_Underscores
 
@@ -112,7 +112,7 @@ Click on the **Add Parameter** and select the parameter type based on the follow
 
 **Type:** String
 
-**Default Value:** <App name or comma separated list of apps to deploy, **with** the tests>
+**Default Value:** \<App name or comma separated list of apps to deploy, **with** the tests>
 
 **Description:** Name of the App(s) with the tests, to deploy. If you add more than one, use a comma to separate them. Example: App1,App2 With Spaces,App3_With_Underscores
 
@@ -121,7 +121,7 @@ Click on the **Add Parameter** and select the parameter type based on the follow
 
 **Type:** String
 
-**Default Value:** <depends on your LT OutSystems platform. If version <= 10, use 1, if version >= 11, use 2>
+**Default Value:** \<depends on your LT OutSystems platform. If version <= 10, use 1, if version >= 11, use 2>
 
 **Description:** LifeTime API version number. If version <= 10, use 1, if version >= 11, use 2.
 
