@@ -1,21 +1,17 @@
-## Introduction
-
 The following guide provides a step-by-step description of how to do a basic install of Jenkins in order to use it as an automation server.
 
 Please refer to the [official documentation](https://jenkins.io/doc/book/installing/) to familiarize yourself with Jenkins and the installation process, if you want more in-depth knowledge.
 
-## General architecture
+# System requirements
 
-## System requirements
+The following are the system requirements we used internally to run our Jenkins server. You can adapt them to your environment to match the number of deployments you intend to run.
 
-This are the following system requirements we used internally to run our Jenkins server. You can adapt it to your environment to match the number of deployments you intend to run.
-
-### Operating Systems
+## Operating Systems
 
 - Windows Server 2016
 - Ubuntu 18.04 LTS
 
-### Virtual Machine
+## Virtual Machine
 
 - **CPU:** 4 vCPU
 - **Memory:** 16 GB
@@ -23,14 +19,14 @@ This are the following system requirements we used internally to run our Jenkins
   - *Root disk:* 50 GB
   - *Data disk:* 100 GB
 
-### AWS
+## AWS
 
 - **Instance Type:** t2.xlarge
 - **Disk:**
   - *Root disk:* 50 GB
   - *Data disk:* 100 GB
 
-### Azure
+## Azure
 
 - **Instance Type:** Standard_D4_v3
 - **Disk:**
@@ -45,15 +41,15 @@ You need to open communication on the following ports / hosts:
 - Jenkins -> LifeTime (HTTPS, port 443)
 - Your network -> Jenkins (HTTP / HTTPS, port 80, 443)
 
-## Jenkins installation
+# Jenkins installation
 
-### Windows
+## Windows
 
 Download Jenkins [here](https://jenkins.io/download/). We use LTS versions of Jenkins, to provide a more stable environment. Version used was Jenkins 2.x.
 
 Run the installer and follow the instructions. Use the Data disk as target for the installation.
 
-### Linux
+## Linux
 
 **Optional:** It's advised to use the Data disk for the Jenkins Home. Make sure the volume is formated and mounted automatically on boot. After this, make sure there's a folder inside the disk and that the owner is the `jenkins` user.
 
@@ -112,17 +108,17 @@ JENKINS_HOME=/data/jenkins
 sudo systemctl restart jenkins
 ~~~~
 
-## Jenkins configuration
+# Jenkins configuration
 
-### Reverse proxy and HTTPS
+## Reverse proxy and HTTPS
 
 This step is optional. If you want to have Jenkins being accessible through HTTPS, you'll need to configure a reverse proxy with a certificate. The certificate generation for the hostname is left to you. Next we will describe how to install the reverse proxy on the Jenkins machine.
 
-#### Windows - IIS
+### Windows - IIS
 
 The configuration for the proxy was adapted from [here](https://wiki.jenkins.io/display/JENKINS/Running+Jenkins+behind+IIS).
 
-##### Requirements
+#### Requirements
 
 - IIS 7.0 or greater
   - IIS 8.5 or greater if you want [Certificate Rebind](https://docs.microsoft.com/en-us/iis/get-started/whats-new-in-iis-85/certificate-rebind-in-iis85)
@@ -172,7 +168,7 @@ Change **useOriginalURLEncoding** to *False* (if you don't see it, you forgot to
 
 And that should be it. You can now use the https to access Jenkins.
 
-#### Linux - Nginx
+### Linux - Nginx
 
 To install Nginx run `sudo apt install -y nginx`. Once it finishes installing, you will need to configure the site configuration for Jenkins. Next we will detail how to create a site configuration:
 
@@ -271,18 +267,18 @@ sudo systemctl restart jenkins
 
 If you didn't set up the hostname in the installation, you have to do it now. Log in to Jenkins and go to **Manage Jenkins** > **Configure System** > **Jenkins Location**. Set the **Jenkins URL** with the new URL you set up on Nginx. Remember to use HTTPS to access Jenkins.
 
-### Plugins & Extra software
+## Plugins & Extra software
 
 To install plugins, just type the name on the **Available Plugins**, under **Manage Jenkins** > **Manage Plugins**
 
-#### Jenkins standard plugins
+### Jenkins standard plugins
 
 - (Optional) BlueOcean: <https://wiki.jenkins.io/display/JENKINS/Blue+Ocean+Plugin>
 - (If you're not using local users) Build Authorization Token Root: <https://wiki.jenkins.io/display/JENKINS/Build+Token+Root+Plugin>
 - JUnit: <https://wiki.jenkins.io/display/JENKINS/JUnit+Plugin>
 - Pyenv Pipeline: <https://wiki.jenkins.io/display/JENKINS/Pyenv+Pipeline+Plugin>
 
-#### Software
+### Software
 
 - Git:
   - Windows: <https://git-scm.com/download/win>
