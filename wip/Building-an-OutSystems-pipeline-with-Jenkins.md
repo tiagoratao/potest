@@ -1,9 +1,3 @@
----
-en_title: Jenkins
----
-
-# How to build an OutSystems continuous delivery pipeline with Jenkins
-
 This guide provides a step-by-step description of how to implement a [recommended continuous delivery pipeline](faq.md) for OutSystems applications by leveraging the [LifeTime Deployment API](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2) along with Jenkins, an open-source automation server.
 
 ## Prerequisites
