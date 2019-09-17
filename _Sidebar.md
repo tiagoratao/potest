@@ -1,7 +1,7 @@
 * [Home](Home)
 * Jenkins
   * [Installing and configuring Jenkins](Installing-and-configuring-Jenkins)
-  * [Setting up a Jenkins Pipeline](Setting-up-a-Jenkins-pipeline)
+  * [Building an OutSystems pipeline with Jenkins](Building-an-OutSystems-pipeline-with-Jenkins)
   * [Customizing your Jenkinsfile](Customizing-your-Jenkinsfile)
 * Azure DevOps
   * [Configuring Azure DevOps](Configuring-Azure-DevOps)
