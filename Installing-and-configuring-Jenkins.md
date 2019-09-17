@@ -1,5 +1,3 @@
-# How to install Jenkins
-
 ## Introduction
 
 The following guide provides a step-by-step description of how to do a basic install of Jenkins in order to use it as an automation server.
