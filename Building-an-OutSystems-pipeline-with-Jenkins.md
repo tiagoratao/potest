@@ -43,11 +43,7 @@ To install the CI/CD probe, download the [CI/CD Probe matching your Platform Ser
 
 ![CI/CD Probe on OutSystems Forge](images/forge-cicd-probe.png?width=800)
 
-<div class="info" markdown="1">
-
-For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
-
-</div>
+> **Note:** For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
 
 ### Create Jenkins Pipeline using template definition file
 
