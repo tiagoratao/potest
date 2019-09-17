@@ -1,7 +1,7 @@
 ## Jenkins
 
 * [Installing and configuring Jenkins](Installing-and-configuring-Jenkins)
-* [Setting up a Jenkins Pipeline](Setting-up-Jenkins-pipeline)
+* [Setting up a Jenkins Pipeline](Setting-up-a-Jenkins-pipeline)
 * [Customizing your Jenkinsfile](Customizing-your-Jenkinsfile)
 
 ## Azure DevOps
