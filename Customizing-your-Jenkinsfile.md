@@ -1,5 +1,3 @@
-# Customizing your Jenkinsfile
-
 ## Adding one environment
 
 On the Jenkinsfile, one environment corresponds to a Stage in the pipeline, for simplicity's sake. The stages have the following configuration:
