@@ -41,7 +41,7 @@ You need to open communication on the following ports / hosts:
 - Jenkins -> LifeTime (HTTPS, port 443)
 - Your network -> Jenkins (HTTP / HTTPS, port 80, 443)
 
-# Jenkins installation
+# Installing Jenkins
 
 ## Windows
 
@@ -108,7 +108,7 @@ JENKINS_HOME=/data/jenkins
 sudo systemctl restart jenkins
 ~~~~
 
-# Jenkins configuration
+# Configuring Jenkins
 
 ## Reverse proxy and HTTPS
 
