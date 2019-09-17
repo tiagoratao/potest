@@ -1,5 +1,3 @@
-# Setting up an Azure DevOps pipeline (Beta)
-
 This guide assumes your factory is composed of 5 environments: Development, Regression, Quality Assurance, Pre-Production and Production. If that differs from your environment, just add/remove the environments (in the pipeline) that are not needed.
 
 To create a pipeline on Azure DevOps, you can use the scripts defined under **cd_pipelines > azure_devops**. You can use either Linux or Windows as your agents. If you use Linux, use the *.sh scripts, if you use Windows use the *.ps1 scripts.
