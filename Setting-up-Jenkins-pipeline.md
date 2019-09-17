@@ -1,5 +1,3 @@
-# Setting up a Jenkins pipeline
-
 This document will go through the basics of setting up a Pipeline in Jenkins for your OutSystems applications. You're free to customize, alter or extend it as you see fit.
 
 We provide 2 examples of Jenkinsfile, one with 5 environments (Development, Regression, Quality Assurance, Pre-Production and Production) that will be described here and another with 3 environments (Development, Regression, Production). If none of this fits your factory please see the [Customizing Jenkinsfile](Customizing-Jenkinsfile) for more details on how to tweak your Jenkinsfile.
