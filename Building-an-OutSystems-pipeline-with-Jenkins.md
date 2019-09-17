@@ -43,7 +43,9 @@ To install the CI/CD probe, download the [CI/CD Probe matching your Platform Ser
 
 ![CI/CD Probe on OutSystems Forge](images/forge-cicd-probe.png?width=800)
 
-> **Note:** For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
+> **Note**
+>
+> For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
 
 ### Create Jenkins Pipeline using template definition file
 
@@ -72,11 +74,9 @@ From the Jenkins Dashboard, go to **New Item**, select **Pipeline** and name it 
 
 ![Jenkins Pipeline](images/jenkins-pipeline.png?width=800)
 
-<div class="info" markdown="1">
-
-To better organize your Jenkins dashboard you can opt to create the Jenkins pipeline inside an existing **Folder**.
-
-</div>
+> **Note**
+>
+> To better organize your Jenkins dashboard you can opt to create the Jenkins pipeline inside an existing **Folder**.
 
 In the **Pipeline** section, select option **Pipeline script from SCM** in the **Definition** field and provide the following configuration values:
 
@@ -95,11 +95,9 @@ The Jenkins pipeline created using the provided pipeline definition file contain
 | **Deploy Dry-Run** | Deploy the latest versions (tags) for the configured applications from ACC to PRE environment. |
 | **Deploy Production** | If the dry-run is successful, immediately trigger the deployment to PRD of the latest versions (tags) for the configured applications. |
 
-<div class="info" markdown="1">
-
-Most of the workload throughout the pipeline is performed by calling a set of functions from the [outsystems-pipeline](https://pypi.org/project/outsystems-pipeline/) Python package, distributed by OutSystems on the Python Package Index (PyPI) repository.
-
-</div>
+> **Note**
+>
+> Most of the workload throughout the pipeline is performed by calling a set of functions from the [outsystems-pipeline](https://pypi.org/project/outsystems-pipeline/) Python package, distributed by OutSystems on the Python Package Index (PyPI) repository.
 
 The following picture shows a successful pipeline run using the Blue Ocean plugin:
 
@@ -163,8 +161,6 @@ To enable this timer, go to the Service Center console of your LifeTime environm
 
 ![Configure timer CheckNewVersionsForPipeline](images/trigger-pipeline-timer.png?width=800)
 
-<div class="info" markdown="1">
-
-A pipeline cannot be triggered while there are still **pending** changes (within the pipeline scope) that have not yet been tagged in LifeTime. The reason for this is to avoid running the pipeline while the changeset is still open and the commit stage has not yet been finalized.
-
-</div>
+> **Note**
+>
+> A pipeline cannot be triggered while there are still **pending** changes (within the pipeline scope) that have not yet been tagged in LifeTime. The reason for this is to avoid running the pipeline while the changeset is still open and the commit stage has not yet been finalized.
