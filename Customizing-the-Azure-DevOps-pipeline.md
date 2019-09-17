@@ -1,5 +1,3 @@
-# Customizing the Azure DevOps pipeline
-
 [//]: # (TODO complete)
 [//]: ## (Adding one environment)
 
