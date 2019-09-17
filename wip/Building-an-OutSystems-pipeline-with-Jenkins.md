@@ -10,8 +10,7 @@ Confirm that you have the following prerequisites installed before executing the
 | [Blue Ocean](https://plugins.jenkins.io/blueocean) (plugin) | 1.17.0 | |
 | [JUnit](https://plugins.jenkins.io/junit) (plugin) | 1.28 | |
 | [Pyenv Pipeline](https://plugins.jenkins.io/pyenv-pipeline) (plugin) | 2.1.1 | |
-| Python 3 (installed on the agent) | 3.7.3 | Make sure that you also install the `pip` package installer.<br/><br/>On Windows systems, also make sure to activate the option **Add Python to PATH** in the installation wizard.
- |
+| Python 3 (installed on the agent) | 3.7.3 | Make sure that you also install the `pip` package installer.<br/><br/>On Windows systems, also make sure to activate the option **Add Python to PATH** in the installation wizard. |
 | Git (installed on the agent) | 2.22.0 | Required when storing the pipeline definition script in a Git repository. |
 
 Refer to the [Jenkins documentation](https://jenkins.io/doc/book/managing/plugins/) on how to install Jenkins plugins.
