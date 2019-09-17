@@ -55,12 +55,6 @@ To orchestrate the flow of activities for the continuous delivery pipeline youâ€
 
 A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins).
 
-<div class="info" markdown="1">
-
-Soon, OutSystems will make available an open-source project containing all the tools needed to build an OutSystems pipeline that integrates with your existing CI/CD tools. These tools include Python scripts and pipeline templates that will simplify adapting an OutSystems pipeline to your specific use cases, and we will be able to accept contributions from the community to help evolve and improve them.
-
-</div>
-
 Create your own copy of the supplied Jenkinsfile template and make sure that the following pipeline **environment variables** are properly set inside the newly created Jenkinsfile:
 
 ```
