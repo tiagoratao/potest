@@ -6,4 +6,4 @@
 * Azure DevOps
   * [Configuring Azure DevOps](Configuring-Azure-DevOps)
   * [Setting up a Azure DevOps Pipeline](Setting-up-Azure-DevOps-pipeline)
-  * [Customizing the Azure DevOps pipeline](Customizing-AzureDevOps)
+  * [Customizing the Azure DevOps pipeline](Customizing-the-Azure-DevOps-pipeline)
