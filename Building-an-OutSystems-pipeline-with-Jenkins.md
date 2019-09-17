@@ -53,7 +53,7 @@ For the time being, the CI/CD Probe is only used for discovering the endpoints o
 
 To orchestrate the flow of activities for the continuous delivery pipeline you’ll need to create a Jenkins pipeline. The easiest way to do this is by providing a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/) text file containing the pipeline definition.
 
-A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here]( https://drive.google.com/open?id=1cujeafACfSSqcb9z9xB-CJ-CVAJr2a4t).
+A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins).
 
 <div class="info" markdown="1">
 
