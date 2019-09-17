@@ -33,7 +33,7 @@ Select **Add Credentials** and provide the following configuration values:
 * **ID:** _LifeTimeServiceAccountToken_
 * **Description:** _Authentication token required for invoking LifeTime Deployment API._
 
-![Add Credentials](img/jenkins-add-credentials.png?width=800)
+![Add Credentials](images/jenkins-add-credentials.png?width=800)
 
 ### Publish CI/CD Probe on Regression environment
 
@@ -41,7 +41,7 @@ To retrieve environment-specific information that is required when running the c
 
 To install the CI/CD probe, download the [CI/CD Probe matching your Platform Server version](https://www.outsystems.com/forge/component-versions/6528) and publish it on the Regression environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
-![CI/CD Probe on OutSystems Forge](img/forge-cicd-probe.png?width=800)
+![CI/CD Probe on OutSystems Forge](images/forge-cicd-probe.png?width=800)
 
 <div class="info" markdown="1">
 
@@ -80,7 +80,7 @@ It is highly advisable to store your custom Jenkinsfile using a version control 
 
 From the Jenkins Dashboard, go to **New Item**, select **Pipeline** and name it _&lt;YourApp&gt;-CD-Pipeline_.
 
-![Jenkins Pipeline](img/jenkins-pipeline.png?width=800)
+![Jenkins Pipeline](images/jenkins-pipeline.png?width=800)
 
 <div class="info" markdown="1">
 
@@ -113,23 +113,23 @@ Most of the workload throughout the pipeline is performed by calling a set of fu
 
 The following picture shows a successful pipeline run using the Blue Ocean plugin:
 
-![Successful pipeline run](img/jenkins-blue-ocean-success.png?width=800)
+![Successful pipeline run](images/jenkins-blue-ocean-success.png?width=800)
 
 By leveraging the test-execution REST API, the Jenkins pipeline is able to [run tests written with the BDD Framework](https://www.outsystems.com/blog/posts/automate-bddframework-testing/) in the list of configured test applications. The outcome of this action is presented as a JUnit test report that seamlessly integrates with the Jenkins UI, as shown in the following picture:
 
-![JUnit test report](img/jenkins-junit-report-success.png?width=800)
+![JUnit test report](images/jenkins-junit-report-success.png?width=800)
 
 Whenever the **Run Regression** fails, the ongoing pipeline run is marked as unstable and all subsequents stages are skipped, thus preventing a release candidate version to proceed further down the pipeline. The pipeline test report displays which tests failed and why, for easier troubleshooting of the regression errors.
 
-![Pipeline run with failed regression](img/jenkins-blue-ocean-fail.png?width=800)
+![Pipeline run with failed regression](images/jenkins-blue-ocean-fail.png?width=800)
 
-![JUnit test report with failed regression test](img/jenkins-junit-report-fail.png?width=800)
+![JUnit test report with failed regression test](images/jenkins-junit-report-fail.png?width=800)
 
 Whenever the pipeline reaches the **Accept Changes** stage, Jenkins [halts the pipeline execution](https://jenkins.io/doc/pipeline/steps/pipeline-input-step/) until an authorized user makes the decision to either accept or reject the release candidate version and proceed until production without further human intervention.
 
-![Pipeline run waiting for the decision of an authorized user](img/jenkins-blue-ocean-halt.png?width=800)
+![Pipeline run waiting for the decision of an authorized user](images/jenkins-blue-ocean-halt.png?width=800)
 
-![Jenkins UI waiting for input of an authorized user](img/jenkins-input.png?width=800)
+![Jenkins UI waiting for input of an authorized user](images/jenkins-input.png?width=800)
 
 This step in the pipeline definition serves as the "push-button" device mentioned in the Introduction section, where all the necessary actions for successfully deploying to production a release candidate that has gone through the deployment pipeline are carried out by pushing a button.
 
@@ -143,7 +143,7 @@ To address this issue, the [Trigger Pipeline](https://www.outsystems.com/forge/c
 
 To install the Trigger Pipeline plugin, download the [Trigger Pipeline plugin matching your Platform Server version](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
-![Trigger Pipeline on OutSystems Forge](img/forge-trigger-pipeline.png?width=800)
+![Trigger Pipeline on OutSystems Forge](images/forge-trigger-pipeline.png?width=800)
 
 After the plugin is successfully published in the LifeTime environment, select **Configure Triggers** from the plugin landing page in LifeTime and configure the following parameters:
 
@@ -152,26 +152,26 @@ After the plugin is successfully published in the LifeTime environment, select *
 * **Pipeline Server Address:** _&lt;Your Jenkins instance base URL&gt;_
 * **Pipeline Server Credentials:** _&lt;Credentials of a Jenkins user account with enough permissions for running pipeline jobs&gt;_
 
-![Trigger Pipeline configuration](img/trigger-pipeline-config-jenkins.png?width=800)
+![Trigger Pipeline configuration](images/trigger-pipeline-config-jenkins.png?width=800)
 
 One or more pipeline triggers can be configured by providing the following data:
 
 * **Pipeline:** _&lt;Unique name that identifies the pipeline in Jenkins (including folders)&gt;_
 * **Applications:** _&lt;List of LifeTime applications that will trigger the CI/CD pipeline, identifying which ones are Test applications&gt;_
 
-![Configure applications that trigger the CI/CD pipeline](img/trigger-pipeline-details.png?width=800)
+![Configure applications that trigger the CI/CD pipeline](images/trigger-pipeline-details.png?width=800)
 
 After the Trigger Pipeline plugin is properly configured, the dashboard screen will show the list of pipeline triggers, along with the current versions in Development of the LifeTime applications defined for each pipeline scope.  
 
 Once there are new application versions available for triggering a pipeline, a button is shown that allows running the pipeline on-demand without the need to log in to Jenkins.
 
-![List of pipelines that can be triggered on-demand](img/trigger-pipeline.png?width=800)
+![List of pipelines that can be triggered on-demand](images/trigger-pipeline.png?width=800)
 
 Alternatively, pipelines can be triggered automatically through the **CheckNewVersionsForPipeline** timer that periodically checks if there are new application versions in Development within the scope of each configured pipeline.
 
 To enable this timer, go to the Service Center console of your LifeTime environment and configure a desirable schedule. The minimum configurable interval is 5 minutes.
 
-![Configure timer CheckNewVersionsForPipeline](img/trigger-pipeline-timer.png?width=800)
+![Configure timer CheckNewVersionsForPipeline](images/trigger-pipeline-timer.png?width=800)
 
 <div class="info" markdown="1">
 
