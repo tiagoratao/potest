@@ -7,5 +7,5 @@
 ## Azure DevOps
 
 * [Configuring Azure DevOps](Configuring-Azure-DevOps)
-* [Setting up an Azure DevOps Pipeline (beta)](Setting-up-an-Azure-DevOps-pipeline-(beta))
+* [Building an OutSystems pipeline with Azure DevOps](Building-an-OutSystems-pipeline-with-Azure-DevOps)
 * [Customizing the Azure DevOps pipeline](Customizing-the-Azure-DevOps-pipeline)
