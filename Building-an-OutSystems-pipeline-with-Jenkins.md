@@ -17,7 +17,7 @@ Refer to the [Jenkins documentation](https://jenkins.io/doc/book/managing/plugin
 
 ## Step-by-step configuration guide
 
-### Register LifeTime Authentication Token as Jenkins Credential
+### 1. Register LifeTime Authentication Token as Jenkins Credential
 
 You need to [create a LifeTime Service Account and generate an Authentication Token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2/REST_API_Authentication) to authenticate all requests to the Deployment API.
 
@@ -35,7 +35,7 @@ Select **Add Credentials** and provide the following configuration values:
 
 ![Add Credentials](images/jenkins-add-credentials.png?width=800)
 
-### Publish CI/CD Probe on Regression environment
+### 2. Publish CI/CD Probe on Regression environment
 
 To retrieve environment-specific information that is required when running the continuous delivery pipeline, the [CI/CD Probe](https://www.outsystems.com/forge/component-overview/6528/ci-cd-probe) Forge component must be installed on the Regression environment of your deployment pipeline.
 
@@ -47,7 +47,7 @@ To install the CI/CD probe, download the [CI/CD Probe matching your Platform Ser
 >
 > For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
 
-### Create Jenkins Pipeline using template definition file
+### 3. Create Jenkins Pipeline using template definition file
 
 To orchestrate the flow of activities for the continuous delivery pipeline you’ll need to create a Jenkins pipeline. The easiest way to do this is by providing a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/) text file containing the pipeline definition.
 
@@ -121,7 +121,7 @@ Whenever the pipeline reaches the **Accept Changes** stage, Jenkins [halts the p
 
 This step in the pipeline definition serves as the "push-button" device mentioned in the Introduction section, where all the necessary actions for successfully deploying to production a release candidate that has gone through the deployment pipeline are carried out by pushing a button.
 
-### Trigger pipeline execution remotely
+### 4. Trigger pipeline execution remotely
 
 Triggering subsequent pipeline runs can be made directly from the Jenkins UI, as needed. This approach, however, is not desirable as it would require provisioning a Jenkins user account for each person that is allowed to trigger the pipeline - in the worst case scenario, a Jenkins account per developer.
 
