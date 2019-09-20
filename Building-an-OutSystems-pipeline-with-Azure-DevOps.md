@@ -184,7 +184,7 @@ From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Ta
 
 ![Import task group](images/azure-import-task-group.png)
 
-#### 3.3 Create a Release Pipeline
+#### 3.3. Create a Release Pipeline
 
 As Azure does not yet support pipeline as code for Release Pipelines, we have to configure it via the GUI.
 
@@ -192,3 +192,89 @@ From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Re
 
 ##### 3.3.1. Get artifacts from Build Pipeline
 
+Define the name of the Build Pipeline as "&lt;YourProduct&gt;-Release-Pipeline" and select **+ Add an artifact**.
+
+![Add an artifact](images/azure-add-artifact.png)
+
+Pipeline artifacts allow sharing files between different pipelines. They are typically the output of a build process that need to be consumed by another job or be deployed. Artifacts are associated with the run that produced them and remain available after the run has been completed.
+
+To retrieve the artifacts from the Build Pipeline, choose **Build** as the source type and fill in the fields, keeping the default value for the **Source alias**.
+
+![Configure artifact](images/azure-configure-artifact.png)
+
+##### 3.3.2. Configure Continuous Deployment  trigger
+
+To automatically trigger the Release Pipeline after a successful Build Pipeline run, select and enable the **Continuous deployment trigger**.
+
+![Activate continuous deployment trigger](images/azure-continuous-deployment-trigger.png)
+
+##### 3.3.3. Configure Pipeline Variables
+
+From the **Variables** tab, navigate to **Variable groups**, select **Link variable group** and choose the previously created variable group.
+
+![Link variable group](images/azure-link-variable-group.png)
+
+From the **Variables** tab, navigate to the **Pipeline Variables**, select **+ Add**, and provide the following configuration values:
+
+| Name | Value | Settable at release time |
+|------|-------|--------------------------|
+| ApplicationScope | Leave blank, the value will be fetched during the Pipeline execution | Yes |
+
+#### 3.3.4. Configure Release Pipeline stages
+
+##### 3.3.4.1. Configure Release Pipeline agent pool and artifact
+
+From the **Tasks** tab, name the stage to "&lt;YourProduct&gt;-&lt;Stage&gt;", select **Agent Job**, define the **Display name** and **Agent pool**, and make sure the job gets the artifact resulting from the Build Pipeline.
+
+![Configure agent job](images/azure-configure-agent-job.png)
+
+##### 3.3.4.2. Configure Release Pipeline tasks
+
+Within the stage, select **+** to add a task, search for the previously created task group and click the **Add** button.
+
+![Add task group](images/azure-add-task-group.png)
+
+Fill in the following mandatory parameters:
+
+| Parameter | Value |
+|-----------|-------|
+| ArtifactName | `$(ArtifactName)` |
+| ArtifactsReleaseFolder | `$(ArtifactsReleaseFolder)` |
+| DestinationEnvironment | `$(AcceptanceEnvironment)` |
+| LifeTimeAPIVersion | `$(LifeTimeAPIVersion)` |
+| LifeTimeEnvironmentURL | `$(LifeTimeEnvironmentURL)` |
+| LifeTimeServiceAccountToken | `$(LifeTimeServiceAccountToken)` |
+| OSPipelineVersion | `$(OSPipelineVersion)` |
+| SourceEnvironment | `$(RegressionEnvironment)` |
+
+##### 3.3.4.3. Clone and configure stages
+
+Open the **+ Add** drop-down list and choose **Clone stage**. The clone option is available only when an existing stage is selected.
+
+![Clone stage](images/azure-clone-stage.png)
+
+Repeat the same clone action from the recently cloned stage, so that you get a sequence of three stages as shown below:
+
+![Cloned stages](images/azure-cloned-stages.png)
+
+Set the specific parameters for each stage:
+
+| Parameter | Stage 1 | Stage 2 | Stage 3 |
+|-----------|---------|---------|---------|
+| DisplayName | `Acceptance` | `Pre-Production` | `Production` |
+| DestinationEnvironment | `$(AcceptanceEnvironment)` | `$(PreProductionEnvironment)` | `$(ProductionEnvironment)` |
+| SourceEnvironment | `$(RegressionEnvironment)` | `$(AcceptanceEnvironment)` | `$(PreProductionEnvironment)` |
+
+#### 3.3.5. Define Deployment Approval
+
+You may want to have an approval gate to take control over the start and completion of the deployments in a release.  With approvals, you can force a Release Pipeline to halt and wait for a set of authorized users to manually approve or reject deployments.
+
+Select Post-deployment conditions from the first stage.
+
+![Post-deployment conditions](images/azure-post-deployment-conditions.png)
+
+Enable Post-deployment approvals and add the users responsible for approving the release candidate to be deployed into Pre-Production and Production Environments.
+
+![Post-deployment approvals](images/azure-post-deployment-approvals.png)
+
+After this, save the Release Pipeline.
