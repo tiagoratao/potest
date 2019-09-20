@@ -50,3 +50,21 @@ The release pipeline is comprised of **3 sequential stages**, each one performin
 Whenever the pipeline reaches **Accept Changes** after the successful deploy on ACC, Azure Pipelines halts the pipeline execution until an authorized user makes the decision to accept (or reject) the release candidate version and proceed until production without further human intervention.
 
 ![Azure DevOps UI waiting for input of an authorized user](images/azure-approval-input.png)
+
+## Prerequisites
+
+Please confirm that you have the following prerequisites before following the steps described in this guide:
+
+* Make sure you have the [necessary rights to configure pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/policies/set-permissions?view=azure-devops) in your Azure DevOps project.
+
+* Have at least one [Azure Pipelines self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) with:
+  * Python 3 installed
+
+    Make sure that you also install the `pip` package installer.
+    On Windows systems, also make sure to activate the option "Add Python to PATH" in the installation wizard.
+
+  * Access to PyPI.org
+
+  * HTTPS connectivity with LifeTime
+
+  * HTTPS connectivity with the front-end servers that are going to run test suites
