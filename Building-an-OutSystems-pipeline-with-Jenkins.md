@@ -105,19 +105,19 @@ The following picture shows a successful pipeline run using the Blue Ocean plugi
 
 By leveraging the test-execution REST API, the Jenkins pipeline is able to [run tests written with the BDD Framework](https://www.outsystems.com/blog/posts/automate-bddframework-testing/) in the list of configured test applications. The outcome of this action is presented as a JUnit test report that seamlessly integrates with the Jenkins UI, as shown in the following picture:
 
-![JUnit test report](images/jenkins-junit-report-success.png?width=800)
+![Test report](images/jenkins-test-report-success.png?width=800)
 
 Whenever the **Run Regression** fails, the ongoing pipeline run is marked as unstable and all subsequents stages are skipped, thus preventing a release candidate version to proceed further down the pipeline. The pipeline test report displays which tests failed and why, for easier troubleshooting of the regression errors.
 
 ![Pipeline run with failed regression](images/jenkins-blue-ocean-fail.png?width=800)
 
-![JUnit test report with failed regression test](images/jenkins-junit-report-fail.png?width=800)
+![Test report with failed regression test](images/jenkins-test-report-fail.png?width=800)
 
 Whenever the pipeline reaches the **Accept Changes** stage, Jenkins [halts the pipeline execution](https://jenkins.io/doc/pipeline/steps/pipeline-input-step/) until an authorized user makes the decision to either accept or reject the release candidate version and proceed until production without further human intervention.
 
 ![Pipeline run waiting for the decision of an authorized user](images/jenkins-blue-ocean-halt.png?width=800)
 
-![Jenkins UI waiting for input of an authorized user](images/jenkins-input.png?width=800)
+![Jenkins UI waiting for input of an authorized user](images/jenkins-approval-input.png?width=800)
 
 This step in the pipeline definition serves as the "push-button" device mentioned in the Introduction section, where all the necessary actions for successfully deploying to production a release candidate that has gone through the deployment pipeline are carried out by pushing a button.
 
