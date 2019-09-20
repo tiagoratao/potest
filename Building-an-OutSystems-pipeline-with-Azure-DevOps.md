@@ -278,3 +278,47 @@ Enable Post-deployment approvals and add the users responsible for approving the
 ![Post-deployment approvals](images/azure-post-deployment-approvals.png)
 
 After this, save the Release Pipeline.
+
+### 4. Trigger pipeline execution remotely
+
+Triggering subsequent pipeline runs can be made directly from the Azure DevOps UI, as needed. This approach, however, is not desirable as it would require provisioning an Azure user account for each person that is allowed to trigger the pipeline - in the worst case scenario, an Azure account per developer.
+
+On the other hand, the purpose of the deployment pipeline is to reduce the amount of manual work required throughout the pipeline’s flow of activities.
+
+To address this issue, the [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/trigger-pipeline) LifeTime plugin available on the OutSystems Forge automatically detects when new versions (tags) are available for a configured subset of LifeTime applications and triggers an associated Azure DevOps pipeline by leveraging the Azure DevOps REST API.
+
+To install the Trigger Pipeline plugin, download the [Trigger Pipeline plugin matching your Platform Server version](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+
+![Trigger Pipeline on OutSystems Forge](images/forge-trigger-pipeline.png)
+
+After the plugin is successfully published in the LifeTime environment, select **Configure Triggers** from the plugin landing page in LifeTime and configure the following parameters:
+
+* **Source Environment:** _&lt;Select your OutSystems Development environment&gt;_
+* **Pipeline Server Type:** _Azure DevOps_
+* **Pipeline Server Address:** _&lt;Your Azure Pipeline instance address (including Project)&gt;_
+* **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs&gt;_
+
+![Trigger Pipeline configuration](images/trigger-pipeline-config-azure.png)
+
+One or more pipeline triggers can be configured by providing the following data:
+
+* **Pipeline:** _&lt;Unique name that identifies the pipeline in Azure DevOps&gt;_
+* **Applications:** _&lt;List of LifeTime applications that will trigger the CI/CD pipeline, identifying which ones are Test applications&gt;_
+
+![Configure applications that trigger the CI/CD pipeline](images/trigger-pipeline-details.png)
+
+After the Trigger Pipeline plugin is properly configured, the dashboard screen will show the list of pipeline triggers, along with the current versions in Development of the LifeTime applications defined for each pipeline scope.  
+
+Once there are new application versions available for triggering a pipeline, a button is shown that allows running the pipeline on-demand without the need to log in to Azure.
+
+![List of pipelines that can be triggered on-demand](images/trigger-pipeline.png)
+
+Alternatively, pipelines can be triggered automatically through the **CheckNewVersionsForPipeline** timer that periodically checks if there are new application versions in Development within the scope of each configured pipeline.
+
+To enable this timer, go to the Service Center console of your LifeTime environment and configure a desirable schedule. The minimum configurable interval is 5 minutes.
+
+![Configure timer CheckNewVersionsForPipeline](images/trigger-pipeline-timer.png)
+
+> **Note**
+>
+> A pipeline cannot be triggered while there are still **pending** changes (within the pipeline scope) that have not yet been tagged in LifeTime. The reason for this is to avoid running the pipeline while the changeset is still open and the commit stage has not yet been finalized.
