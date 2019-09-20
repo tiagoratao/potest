@@ -60,7 +60,7 @@ Please confirm that you have the following prerequisites before following the st
 * Have at least one [Azure Pipelines self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) with:
   * Python 3 installed
 
-    Make sure that you also install the `pip` package installer.
+    Make sure that you also install the `pip` package installer.<br/>
     On Windows systems, also make sure to activate the option "Add Python to PATH" in the installation wizard.
 
   * Access to PyPI.org
@@ -68,3 +68,42 @@ Please confirm that you have the following prerequisites before following the st
   * HTTPS connectivity with LifeTime
 
   * HTTPS connectivity with the front-end servers that are going to run test suites
+
+## Step-by-step configuration guide
+
+### 1. Publish CI/CD probe in Regression environment
+
+To retrieve environment-specific information that is required when running the continuous delivery pipeline, the [CI/CD Probe](https://www.outsystems.com/forge/component-overview/6528/ci-cd-probe) Forge component must be installed on the Regression environment of your deployment pipeline.
+
+To install the CI/CD probe, download the [CI/CD Probe matching your Platform Server version](https://www.outsystems.com/forge/component-versions/6528) and publish it on the Regression environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+
+![CI/CD Probe on OutSystems Forge](images/forge-cicd-probe.png)
+
+> **Note**
+>
+> For the time being, the CI/CD Probe is only used for discovering the endpoints of existing BDD test scenarios in the target environment. Additional functionality may be added to the CI/CD Probe in future iterations.
+
+### 2. Set up variables
+
+In Azure, **variable groups** are a convenient way to to make sets of reusable variables available across multiple pipelines.
+
+In this guide we'll create and use a single variable group that will provide all infrastructure context to run the pipelines.
+
+#### 2.1. Create a variable group
+
+From the Azure Pipelines Dashboard, open the "Library" tab to see a list of existing variable groups for your project and choose "+ Variable group".
+
+Enter a name and description for the variable group and make it accessible to any pipeline by setting the option "Allow access to all pipelines".
+
+#### 2.2. Register LifeTime authentication token as secret variable
+
+You need to [create a LifeTime service account and generate an authentication token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2/REST_API_Authentication) to authenticate all requests to the Deployment API.
+
+From the variable group previously created, select "+ Add" and provide the following configuration values:
+
+* **Name:** LifeTimeServiceAccountToken
+* **Value:** &lt;your LifeTime authentication token&gt;
+
+Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of hidden (secret) variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
+
+![Add Credentials](images/azure-add-credentials.png)

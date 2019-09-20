@@ -19,7 +19,7 @@ Refer to the [Jenkins documentation](https://jenkins.io/doc/book/managing/plugin
 
 ### 1. Register LifeTime Authentication Token as Jenkins Credential
 
-You need to [create a LifeTime Service Account and generate an Authentication Token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2/REST_API_Authentication) to authenticate all requests to the Deployment API.
+You need to [create a LifeTime service account and generate an authentication token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2/REST_API_Authentication) to authenticate all requests to the Deployment API.
 
 This token can then be configured as a Jenkins credential, allowing it to be reused throughout your pipelines via the corresponding credential ID, while keeping it secure and accessible only by authorized users.
 
