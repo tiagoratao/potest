@@ -104,7 +104,7 @@ From the variable group previously created, select "+ Add" and provide the follo
 * **Name:** LifeTimeServiceAccountToken
 * **Value:** &lt;your LifeTime authentication token&gt;
 
-Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of hidden (secret) variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
+Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of secret variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
 
 ![Add Credentials](images/azure-add-credentials.png)
 
@@ -133,3 +133,62 @@ From the variable group previously created, select "+ Add" and provide the follo
 ### 3. Create Build and Release Pipelines
 
 To orchestrate the flow of activities for the continuous delivery pipeline, as described in the introduction, you'll need to create two pipelines: Build and Release Pipelines.
+
+#### 3.1. Create a Build Pipeline using template definition file
+
+The easiest way to do this is by providing a YAML file containing the build pipeline definition. A template YAML file for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/azure_devops).
+
+It is highly advisable to store your template YAML file using a version control system such as Git, as this ensures that you are able to keep track of any changes made to your pipeline definition going forward. Additionally, any other supporting artifacts that you may need to run your continuous delivery pipeline can also be stored in a single location alongside the YAML file, and synced to the pipeline workspace folder on every run.
+
+##### 3.1.1. Create Build Pipeline
+
+From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Builds** page, select **+ New**, **New build pipeline**, choose "Use the classic editor to create a pipeline without YAML", then select the version control system (Source) where you've previously stored the YAML file.
+
+> **Note**
+>
+> We have chosen the classic editor to have a streamlined configuration. It's also possible to configure by selecting the "Existing Azure Pipelines YAML file" option but you will have to cancel the pipeline execution immediately after you save it since it will attempt to run it immediately.
+
+Once you have configured the version control system, choose YAML for **Configuration as code**.
+
+![Choose YAML for Configuration as code](images/azure-yaml-configuration-as-code.png)
+
+From the Pipeline tab define the name as "&lt;YourProduct&gt;-Build-Pipeline", choose the **Default Agent Pool** and select the previously stored YAML file.
+
+![Configure Build pipeline](images/azure-configure-build-pipeline.png)
+
+##### 3.1.2. Configure Build Pipeline variables
+
+From the **Variables** tab, navigate to the variable groups, select the **Link variable group** button and choose the previously created variable group.
+
+![Link variable group](images/azure-link-variable-group.png)
+
+From the **Variables** tab, navigate to the **Pipeline Variables**,  select **+ Add** and provide the following configuration values:
+
+| Name | Value | Settable at queue time |
+|------|-------|------------------------|
+| ApplicationScope | Leave blank, the value will be fetched from LifeTime Trigger Plugin | Yes |
+| ApplicationScopeWithTests | Leave blank, the value will be fetched from LifeTime Trigger Plugin | Yes |
+| TriggeredBy | Leave blank, the value will be fetched from LifeTime Trigger Plugin | Yes |
+
+![Configure Build Pipeline variables](images/azure-build-pipeline-variables.png)
+
+From the **Save & Queue** tab choose **Save**.
+
+![Save Build Pipeline variables](images/azure-build-pipeline-save-variables.png)
+
+#### 3.2. Create a task group
+
+A template JSON file for the task group [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/azure_devops).
+
+From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Task groups** page, select **Import**, and upload the JSON template file. Then, save the newly created task group.
+
+![Import task group](images/azure-import-task-group.png)
+
+#### 3.3 Create a Release Pipeline
+
+As Azure does not yet support pipeline as code for Release Pipelines, we have to configure it via the GUI.
+
+From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Releases** page, select **+ New**, **New release pipeline**, and choose **Empty job**.
+
+##### 3.3.1. Get artifacts from Build Pipeline
+
