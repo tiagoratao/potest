@@ -107,3 +107,29 @@ From the variable group previously created, select "+ Add" and provide the follo
 Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of hidden (secret) variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
 
 ![Add Credentials](images/azure-add-credentials.png)
+
+#### 2.3. Register environment variables
+
+For a smooth run of the pipeline you'll need to provide some context about your OutSystems factory and global values to be used by the pipelines.
+
+From the variable group previously created, select "+ Add" and provide the following configuration values:
+
+| Name | Value | Example value |
+|------|-------|---------------|
+| LifeTimeHostname | &lt;Hostname of LifeTime environment&gt; | lifetime.example.com |
+| LifeTimeAPIVersion | &lt;Version of LifeTime Deployment API to use&gt; | 2 |
+| DevelopmentEnvironment | &lt;Name of Development environment&gt; | Development |
+| RegressionEnvironment | &lt;Name of Regression environment&gt; | Regression |
+| AcceptanceEnvironment | &lt;Name of Acceptance environment&gt; | Acceptance |
+| PreProductionEnvironment | &lt;Name of Pre-Production environment&gt; | Pre-Production |
+| ProductionEnvironment | &lt;Name of Production environment&gt; | Production |
+| ProbeEnvironmentURL | &lt;URL of environment where CI/CD probe is deployed&gt; | https://regression-env.example.com/ |
+| BddEnvironmentURL | &lt;URL of environment where BDD tests will run automatically&gt; | https://regression-env.example.com/ |
+| ArtifactsBuildFolder | &lt;Folder that will store all outputs from the Build pipeline to be used by the Release pipeline&gt; | Artifacts |
+| ArtifactName | &lt;Name specification for the compressed outputs to be used by the Release pipeline&gt; | manifest |
+| ArtifactsReleaseFolder | &lt;Folder that will store the outputs from the Build pipeline&gt; | $(System.DefaultWorkingDirectory) |
+| OSPipelineVersion | &lt;Outsystems Python package version&gt; | 0.2.18 |
+
+### 3. Create Build and Release Pipelines
+
+To orchestrate the flow of activities for the continuous delivery pipeline, as described in the introduction, you'll need to create two pipelines: Build and Release Pipelines.
