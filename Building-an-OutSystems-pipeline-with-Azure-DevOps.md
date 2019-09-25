@@ -190,7 +190,7 @@ From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Re
 
 ##### 3.3.1. Get artifacts from Build Pipeline
 
-Define the name of the Build Pipeline as "&lt;YourProduct&gt;-Release-Pipeline" and select **+ Add an artifact**.
+Define the name of the Release Pipeline as "&lt;YourProduct&gt;-Release-Pipeline" and select **+ Add an artifact**.
 
 ![Add an artifact](images/azure-add-artifact.png)
 
