@@ -16,14 +16,12 @@ On the other hand, the **Release Pipeline** serves as the "push-button" device m
 
 ### Build Pipeline anatomy
 
-The Build Pipeline is comprised of **4 sequential stages**, each one performing one or more actions as described in the following table:
+The Build Pipeline contains a single stage that includes **two main actions** as described in the following table:
 
-| Stage | Actions performed |
+| Actions | Tasks performed |
 |-------|-------------------|
-| Install Dependencies | Install required Python dependencies for running pipeline activities. |
 | Deploy to REG | Fetch the latest versions (tags) in DEV for the configured Applications and deploy them to REG environment. |
 | Run Regression | Generate Python script for running BDD test scenarios using unittest module.<br/><br/>Run unit test suite and publish test results report. |
-| Deploy to ACC | Deploy the latest versions (tags) for the configured Applications (excluding test apps) from REG to ACC environment. |
 
 By leveraging the test-execution REST API, the pipeline is able to run tests written with the BDD Framework in the list of configured test applications. The outcome of this action is presented as a JUnit test report that seamlessly integrates with the Azure DevOps UI, as shown in the following picture:
 
