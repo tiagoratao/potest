@@ -116,11 +116,11 @@ From the variable group previously created, select "+ Add" and provide the follo
 |------|-------|---------------|
 | LifeTimeHostname | &lt;Hostname of LifeTime environment&gt; | lifetime.example.com |
 | LifeTimeAPIVersion | &lt;Version of LifeTime Deployment API to use&gt; | 2 |
-| DevelopmentEnvironment | &lt;Name of Development environment&gt; | Development |
-| RegressionEnvironment | &lt;Name of Regression environment&gt; | Regression |
-| AcceptanceEnvironment | &lt;Name of Acceptance environment&gt; | Acceptance |
-| PreProductionEnvironment | &lt;Name of Pre-Production environment&gt; | Pre-Production |
-| ProductionEnvironment | &lt;Name of Production environment&gt; | Production |
+| DevelopmentEnvironment | &lt;Name of Development environment as defined on LifeTime&gt; | Development |
+| RegressionEnvironment | &lt;Name of Regression environment as defined on LifeTime&gt; | Regression |
+| AcceptanceEnvironment | &lt;Name of Acceptance environment as defined on LifeTime&gt; | Acceptance |
+| PreProductionEnvironment | &lt;Name of Pre-Production environment as defined on LifeTime&gt; | Pre-Production |
+| ProductionEnvironment | &lt;Name of Production environment as defined on LifeTime&gt; | Production |
 | ProbeEnvironmentURL | &lt;URL of environment where CI/CD probe is deployed&gt; | https://regression-env.example.com/ |
 | BddEnvironmentURL | &lt;URL of environment where BDD tests will run automatically&gt; | https://regression-env.example.com/ |
 | ArtifactsBuildFolder | &lt;Folder that will store all outputs from the Build pipeline to be used by the Release pipeline&gt; | Artifacts |
