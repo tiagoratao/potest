@@ -240,7 +240,7 @@ Fill in the following mandatory parameters:
 | ArtifactsReleaseFolder | `$(ArtifactsReleaseFolder)` |
 | DestinationEnvironment | `$(AcceptanceEnvironment)` |
 | LifeTimeAPIVersion | `$(LifeTimeAPIVersion)` |
-| LifeTimeEnvironmentURL | `$(LifeTimeEnvironmentURL)` |
+| LifeTimeHostname | `$(LifeTimeHostname)` |
 | LifeTimeServiceAccountToken | `$(LifeTimeServiceAccountToken)` |
 | OSPipelineVersion | `$(OSPipelineVersion)` |
 | SourceEnvironment | `$(RegressionEnvironment)` |
