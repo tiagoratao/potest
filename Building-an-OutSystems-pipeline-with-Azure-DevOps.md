@@ -55,7 +55,7 @@ Please confirm that you have the following prerequisites before following the st
 
 * Make sure you have the [necessary rights to configure pipelines](https://docs.microsoft.com/en-us/azure/devops/pipelines/policies/set-permissions?view=azure-devops) in your Azure DevOps project.
 
-* Have at least one [Azure Pipelines self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) with:
+* Have at least one [Azure Pipelines self-hosted agent](https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/agents?view=azure-devops#install) registered in the default agent pool with:
   * Python 3 installed
 
     Make sure that you also install the `pip` package installer.<br/>
@@ -150,7 +150,7 @@ Once you have configured the version control system, choose YAML for **Configura
 
 ![Choose YAML for Configuration as code](images/azure-yaml-configuration-as-code.png)
 
-From the Pipeline tab define the name as "&lt;YourProduct&gt;-Build-Pipeline", choose the **Default Agent Pool** and select the previously stored YAML file.
+From the Pipeline tab define the name as "&lt;YourProduct&gt;-Build-Pipeline", choose the **Default Agent Pool** where the self-hosted agent is registered and select the previously stored YAML file.
 
 ![Configure Build pipeline](images/azure-configure-build-pipeline.png)
 
