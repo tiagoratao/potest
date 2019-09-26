@@ -196,7 +196,7 @@ Define the name of the Release Pipeline as "&lt;YourProduct&gt;-Release-Pipeline
 
 Pipeline artifacts allow sharing files between different pipelines. They are typically the output of a build process that need to be consumed by another job or be deployed. Artifacts are associated with the run that produced them and remain available after the run has been completed.
 
-To retrieve the artifacts from the Build Pipeline, choose **Build** as the source type and fill in the fields, keeping the default value for the **Source alias**.
+To retrieve the artifacts from the Build Pipeline, choose **Build** as the source type and fill in the fields, keeping the default value for the **Source alias**. Click **Add** to save the artifact.
 
 ![Configure artifact](images/azure-configure-artifact.png)
 
