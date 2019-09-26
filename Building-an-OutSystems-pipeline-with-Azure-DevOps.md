@@ -222,7 +222,7 @@ From the **Variables** tab, navigate to the **Pipeline Variables**, select **+ A
 
 ##### 3.3.4.1. Configure Release Pipeline agent pool and artifact
 
-From the **Tasks** tab, name the stage to "&lt;YourProduct&gt;-&lt;Stage&gt;", select **Agent Job**, define the **Display name** and **Agent pool**, and make sure the job gets the artifact resulting from the Build Pipeline.
+From the **Tasks** tab, define the display name as "Stage 1", select **Agent Job**, define the **Display name** and **Agent pool**, and make sure the job gets the artifact resulting from the Build Pipeline.
 
 ![Configure agent job](images/azure-configure-agent-job.png)
 
@@ -247,7 +247,7 @@ Fill in the following mandatory parameters:
 
 ##### 3.3.4.3. Clone and configure stages
 
-Open the **+ Add** drop-down list and choose **Clone stage**. The clone option is available only when an existing stage is selected.
+Open the **+ Add** drop-down list and choose **Clone**. The clone option is available only when an existing stage is selected.
 
 ![Clone stage](images/azure-clone-stage.png)
 
