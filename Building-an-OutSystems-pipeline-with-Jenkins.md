@@ -138,7 +138,7 @@ After the plugin is successfully published in the LifeTime environment, select *
 * **Source Environment:** _&lt;Select your OutSystems Development environment&gt;_
 * **Pipeline Server Type:** _Jenkins_
 * **Pipeline Server Address:** _&lt;Your Jenkins instance base URL&gt;_
-* **Pipeline Server Credentials:** _&lt;User name and API token for Jenkins user account with enough permissions for running pipeline jobs&gt;_
+* **Pipeline Server Credentials:** _&lt;Username and API token for Jenkins user account with enough permissions for running pipeline jobs&gt;_
 
 ![Trigger Pipeline configuration](images/trigger-pipeline-config-jenkins.png)
 
