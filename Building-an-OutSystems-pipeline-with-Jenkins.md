@@ -51,7 +51,7 @@ To install the CI/CD probe, download the [CI/CD Probe matching your Platform Ser
 
 To orchestrate the flow of activities for the continuous delivery pipeline you’ll need to create a Jenkins pipeline. The easiest way to do this is by providing a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/) text file containing the pipeline definition.
 
-A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins).
+A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins/Windows.Jenkinsfile).
 
 Create your own copy of the supplied Jenkinsfile template and make sure that the following pipeline **environment variables** are properly set inside the newly created Jenkinsfile:
 
