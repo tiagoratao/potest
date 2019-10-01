@@ -13,12 +13,29 @@ fetch_lifetime_data.py [-h] [-a ARTIFACTS]
 
 ### Arguments
 
-* **-h, --help**: Show this help message and exit.
-* **-a ARTIFACTS, --artifacts ARTIFACTS**: (Optional) Name of the artifacts folder. Default: "Artifacts"
-* **-u LT_URL, --lt_url LT_URL**: URL of the LifeTime environment, without the API endpoint. Example: "https://<lifetime_host>"
-* **-t LT_TOKEN, --lt_token LT_TOKEN**: LifeTime authentication token used in the API requests.
-* **-v LT_API_VERSION, --lt_api_version LT_API_VERSION**: (Optional) LifeTime Deployment API version to use. Use 2 for OutSystems 11 and above and 1 for OutSystems 10. Default: 2
-* **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**: (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
+* **-h, --help**
+
+  Show this help message and exit.
+
+* **-a ARTIFACTS, --artifacts ARTIFACTS**
+
+  (Optional) Name of the artifacts folder. Default: "Artifacts"
+
+* **-u LT_URL, --lt_url LT_URL**
+
+  URL of the LifeTime environment, without the API endpoint. Example: "https://<lifetime_host>"
+
+* **-t LT_TOKEN, --lt_token LT_TOKEN**
+
+  LifeTime authentication token used in the API requests.
+
+* **-v LT_API_VERSION, --lt_api_version LT_API_VERSION**
+
+  (Optional) LifeTime Deployment API version to use. Use 2 for OutSystems 11 and above and 1 for OutSystems 10. Default: 2
+
+* **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**
+
+  (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
 
 ## outsystems.pipeline.deploy_latest_tags_to_target_env
 
@@ -43,16 +60,45 @@ deploy_latest_tags_to_target_env.py [-h] [-a ARTIFACTS]
 
 ### Arguments
 
-* **-h, --help**: Show this help message and exit.
-* **-a ARTIFACTS, --artifacts ARTIFACTS**: (Optional) Name of the artifacts folder. Default: "Artifacts"
-* **-u LT_URL, --lt_url LT_URL**: URL of the LifeTime environment, without the API endpoint. Example: "https://<lifetime_host>"
-* **-t LT_TOKEN, --lt_token LT_TOKEN**: LifeTime authentication token used in the API requests.
-* **-v LT_API_VERSION, --lt_api_version LT_API_VERSION**: (Optional) LifeTime Deployment API version to use. Use 2 for OutSystems 11 and above and 1 for OutSystems 10. Default: 2
-* **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**: (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
-* **-s SOURCE_ENV, --source_env SOURCE_ENV**: Name of the source environment, as displayed on LifeTime. Example: "Development"
-* **-d DESTINATION_ENV, --destination_env DESTINATION_ENV**: Name of the destination environment where to deploy the apps, as displayed on LifeTime. Example: "Regression"
-* **-l APP_LIST, --app_list APP_LIST**: Comma-separated list app names to deploy. Example: "App1,App2 With Spaces,App3_With_Underscores"
-* **-m DEPLOY_MSG, --deploy_msg DEPLOY_MSG**: (Optional) Note to include on the deployment plan. Default: "Automated deploy via OutSystems Pipeline"
+* **-h, --help**
+
+  Show this help message and exit.
+
+* **-a ARTIFACTS, --artifacts ARTIFACTS**
+
+  (Optional) Name of the artifacts folder. Default: "Artifacts"
+
+* **-u LT_URL, --lt_url LT_URL**
+
+  URL of the LifeTime environment, without the API endpoint. Example: "https://<lifetime_host>"
+
+* **-t LT_TOKEN, --lt_token LT_TOKEN**
+
+  LifeTime authentication token used in the API requests.
+
+* **-v LT_API_VERSION, --lt_api_version LT_API_VERSION**
+
+  (Optional) LifeTime Deployment API version to use. Use 2 for OutSystems 11 and above and 1 for OutSystems 10. Default: 2
+
+* **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**
+
+  (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
+
+* **-s SOURCE_ENV, --source_env SOURCE_ENV**
+
+  Name of the source environment, as displayed on LifeTime. Example: "Development"
+
+* **-d DESTINATION_ENV, --destination_env DESTINATION_ENV**
+
+  Name of the destination environment where to deploy the apps, as displayed on LifeTime. Example: "Regression"
+
+* **-l APP_LIST, --app_list APP_LIST**
+
+  Comma-separated list app names to deploy. Example: "App1,App2 With Spaces,App3_With_Underscores"
+
+* **-m DEPLOY_MSG, --deploy_msg DEPLOY_MSG**
+
+  (Optional) Note to include on the deployment plan. Default: "Automated deploy via OutSystems Pipeline"
 
 ## outsystems.pipeline.generate_unit_testing_assembly
 
@@ -72,15 +118,41 @@ generate_unit_testing_assembly.py [-h] [-a ARTIFACTS]
 
 ### Arguments
 
-* **-h, --help**: Show this help message and exit.
-* **-a ARTIFACTS, --artifacts ARTIFACTS**: (Optional) Name of the artifacts folder. Default: "Artifacts"
-* **-l APP_LIST, --app_list APP_LIST**: Comma-separated list app names to deploy. Example: "App1,App2 With Spaces,App3_With_Underscores"
-* **--cicd_probe_env CICD_PROBE_ENV**: URL of the CI/CD Probe, without the API endpoint. Example: "https://<host>"
-* **--cicd_probe_api CICD_PROBE_API**: (Optional) Overrides the default CI/CD Probe API endpoint, without the version. Default: "CI_CDProbe/rest"
-* **--cicd_probe_version CICD_PROBE_VERSION**: (Optional) CI/CD Probe API version to use. Default: 1
-* **--bdd_framework_env BDD_FRAMEWORK_ENV**: URL of the BDD Framework, without the API endpoint. Example: "https://<host>"
-* **--bdd_framework_api BDD_FRAMEWORK_API**: (Optional) Overrides the default BDD Framework API endpoint, without the version. Default: "BDDFramework/rest"
-* **--bdd_framework_version BDD_FRAMEWORK_VERSION**: (Optional) BDD Framework API version to use. Default: 1
+* **-h, --help**
+
+  Show this help message and exit.
+
+* **-a ARTIFACTS, --artifacts ARTIFACTS**
+
+  (Optional) Name of the artifacts folder. Default: "Artifacts"
+
+* **-l APP_LIST, --app_list APP_LIST**
+
+  Comma-separated list app names to deploy. Example: "App1,App2 With Spaces,App3_With_Underscores"
+
+* **--cicd_probe_env CICD_PROBE_ENV**
+
+  URL of the CI/CD Probe, without the API endpoint. Example: "https://<host>"
+
+* **--cicd_probe_api CICD_PROBE_API**
+
+  (Optional) Overrides the default CI/CD Probe API endpoint, without the version. Default: "CI_CDProbe/rest"
+
+* **--cicd_probe_version CICD_PROBE_VERSION**
+
+  (Optional) CI/CD Probe API version to use. Default: 1
+
+* **--bdd_framework_env BDD_FRAMEWORK_ENV**
+
+  URL of the BDD Framework, without the API endpoint. Example: "https://<host>"
+
+* **--bdd_framework_api BDD_FRAMEWORK_API**
+
+  (Optional) Overrides the default BDD Framework API endpoint, without the version. Default: "BDDFramework/rest"
+
+* **--bdd_framework_version BDD_FRAMEWORK_VERSION**
+
+  (Optional) BDD Framework API version to use. Default: 1
 
 ## outsystems.pipeline.evaluate_test_results
 
@@ -93,5 +165,10 @@ evaluate_test_results.py [-h] [-a ARTIFACTS]
 
 ### Arguments
 
-* **-h, --help**: Show this help message and exit.
-* **-a ARTIFACTS, --artifacts ARTIFACTS**: (Optional) Name of the artifacts folder. Default: "Artifacts"
+* **-h, --help**
+
+  Show this help message and exit.
+
+* **-a ARTIFACTS, --artifacts ARTIFACTS**
+
+  (Optional) Name of the artifacts folder. Default: "Artifacts"
