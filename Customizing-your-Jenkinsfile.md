@@ -56,7 +56,7 @@ Before you start using the Slack package, you'll need to configure the following
 
 **Default Value:** \<Channel or list of channels>
 
-**Description:** Name of the Slack Channel you wish to send notifications. For more than one, use a comma-separated list. E.g.: channel1,channel-2,channel-num-3
+**Description:** Name of the Slack Channel you wish to send notifications. For more than one, use a comma-separated list. E.g.: `<channel1>,<channel2>,<channel3>`
 
 ----------
 
@@ -68,7 +68,7 @@ Before you start using the Slack package, you'll need to configure the following
 
 **Required:** True
 
-**Default Value:** \<You can either create here the Slack Hook or select on previously created>
+**Default Value:** \<You can either create here the Slack Hook or select one previously created>
 
 **Description:** Slack Hook for API requests
 
