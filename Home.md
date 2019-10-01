@@ -7,4 +7,3 @@
 ## Azure DevOps
 
 * [Building an OutSystems pipeline with Azure DevOps](Building-an-OutSystems-pipeline-with-Azure-DevOps)
-* [Customizing the Azure DevOps pipeline](Customizing-the-Azure-DevOps-pipeline)
