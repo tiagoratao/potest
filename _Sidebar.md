@@ -7,4 +7,4 @@
   * [Building an OutSystems pipeline with Azure DevOps](Building-an-OutSystems-pipeline-with-Azure-DevOps)
 * Other CI/CD Tools
   * [Example wrapper scripts](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/other_pipelines)
-  * [outsystems.pipeline command-line reference](outsystems.pipeline-command-line-reference.md)
+  * [outsystems.pipeline command-line reference](outsystems.pipeline-command-line-reference)

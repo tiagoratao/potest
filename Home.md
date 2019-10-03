@@ -12,4 +12,4 @@
 
 We provide [example wrapper scripts](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/other_pipelines) that you can adapt to help you integrate with other CI/CD tools of your choice. Alternatively, you can also call the `outsystems.pipeline` Python scripts directly, which are documented in the following page:
 
-* [outsystems.pipeline command-line reference](outsystems.pipeline-command-line-reference.md)
+* [outsystems.pipeline command-line reference](outsystems.pipeline-command-line-reference)
