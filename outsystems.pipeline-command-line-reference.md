@@ -1,9 +1,9 @@
 The following reference describes the syntax and arguments of the Python scripts included in the package `outsystems.pipeline`:
 
-* [outsystems.pipeline.fetch_lifetime_data](#outsystems.pipeline.fetch_lifetime_data)
-* [outsystems.pipeline.deploy_latest_tags_to_target_env](#outsystems.pipeline.deploy_latest_tags_to_target_env)
-* [outsystems.pipeline.generate_unit_testing_assembly](#outsystems.pipeline.generate_unit_testing_assembly)
-* [outsystems.pipeline.evaluate_test_results](#outsystems.pipeline.evaluate_test_results)
+* [outsystems.pipeline.fetch_lifetime_data](#outsystemspipelinefetch_lifetime_data)
+* [outsystems.pipeline.deploy_latest_tags_to_target_env](#outsystemspipelinedeploy_latest_tags_to_target_env)
+* [outsystems.pipeline.generate_unit_testing_assembly](#outsystemspipelinegenerate_unit_testing_assembly)
+* [outsystems.pipeline.evaluate_test_results](#outsystemspipelineevaluate_test_results)
 
 ## outsystems.pipeline.fetch_lifetime_data
 
