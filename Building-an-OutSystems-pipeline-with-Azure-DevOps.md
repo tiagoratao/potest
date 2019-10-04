@@ -285,16 +285,16 @@ On the other hand, the purpose of the deployment pipeline is to reduce the amoun
 
 To address this issue, the [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/trigger-pipeline) LifeTime plugin available on the OutSystems Forge automatically detects when new versions (tags) are available for a configured subset of LifeTime applications and triggers an associated Azure DevOps pipeline by leveraging the Azure DevOps REST API.
 
-To install the Trigger Pipeline plugin, download the [Trigger Pipeline plugin matching your Platform Server version](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+To install the Trigger Pipeline LifeTime plugin, download the [Trigger Pipeline plugin matching your Platform Server version](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
 ![Trigger Pipeline on OutSystems Forge](images/forge-trigger-pipeline.png)
 
 After the plugin is successfully published in the LifeTime environment, select **Configure Triggers** from the plugin landing page in LifeTime and configure the following parameters:
 
-* **Source Environment:** _&lt;Select your OutSystems Development environment&gt;_
+* **Source Environment:** _&lt;Select your OutSystems Development environment.&gt;_
 * **Pipeline Server Type:** _Azure DevOps_
-* **Pipeline Server Address:** _&lt;Your Azure Pipeline instance address (including Project)&gt;_
-* **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs&gt;_
+* **Pipeline Server Address:** _&lt;Your Azure Pipeline instance address, including organization and project. For example, `https://dev.azure.com/{organization}/{project}` for a Build Pipeline or `https://vsrm.dev.azure.com/{organization}/{project}` for a Release Pipeline.&gt;_
+* **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs. It's recommended that you create a dedicated user with a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-autheanticate?view=azure-devops#create-personal-access-tokens-to-authenticate-access) instead of a regular password for this authentication.&gt;_
 
 ![Trigger Pipeline configuration](images/trigger-pipeline-config-azure.png)
 
