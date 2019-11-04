@@ -294,7 +294,7 @@ After the plugin is successfully published in the LifeTime environment, select *
 * **Source Environment:** _&lt;Select your OutSystems Development environment.&gt;_
 * **Pipeline Server Type:** _Azure DevOps_
 * **Pipeline Server Address:** _&lt;Your Azure Pipeline instance address, including organization and project. For example, `https://dev.azure.com/{organization}/{project}` for a Build Pipeline or `https://vsrm.dev.azure.com/{organization}/{project}` for a Release Pipeline.&gt;_
-* **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs. You must use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops) instead of a regular password for this authentication, and we recommended creating a dedicated user for this.&gt;_
+* **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs. You must use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops) instead of a regular password for this authentication, and we recommended creating a dedicated user for this purpose.&gt;_
 
 ![Trigger Pipeline configuration](images/trigger-pipeline-config-azure.png)
 
