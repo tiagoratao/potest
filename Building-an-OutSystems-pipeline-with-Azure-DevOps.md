@@ -126,7 +126,7 @@ From the variable group previously created, select "+ Add" and provide the follo
 | ArtifactsBuildFolder | &lt;Folder that will store all outputs from the Build pipeline to be used by the Release pipeline&gt; | Artifacts |
 | ArtifactName | &lt;Name specification for the compressed outputs to be used by the Release pipeline&gt; | manifest |
 | ArtifactsReleaseFolder | &lt;Folder that will store the outputs from the Build pipeline&gt; | $(System.DefaultWorkingDirectory) |
-| OSPipelineVersion | &lt;Outsystems Python package version&gt; | 0.2.18 |
+| OSPackageVersion | &lt;Outsystems Python package version&gt; | 0.3.1 |
 
 ### 3. Create Build and Release Pipelines
 
