@@ -242,7 +242,7 @@ Fill in the following mandatory parameters:
 | LifeTimeAPIVersion | `$(LifeTimeAPIVersion)` |
 | LifeTimeHostname | `$(LifeTimeHostname)` |
 | LifeTimeServiceAccountToken | `$(LifeTimeServiceAccountToken)` |
-| OSPipelineVersion | `$(OSPipelineVersion)` |
+| OSPackageVersion | `$(OSPackageVersion)` |
 | SourceEnvironment | `$(RegressionEnvironment)` |
 
 ##### 3.3.4.3. Clone and configure stages
