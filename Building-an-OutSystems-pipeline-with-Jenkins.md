@@ -9,6 +9,7 @@ Confirm that you have the following prerequisites installed before executing the
 | Jenkins Automation Server | 2.176.1 | [Install Jenkins](https://jenkins.io/doc/book/installing/) on a separate machine from the OutSystems platform. |
 | [Blue Ocean](https://plugins.jenkins.io/blueocean) (plugin) | 1.17.0 | |
 | [JUnit](https://plugins.jenkins.io/junit) (plugin) | 1.28 | |
+| [Lockable Resources](https://plugins.jenkins.io/lockable-resources/) (plugin) | 2.7 | |
 | [Pyenv Pipeline](https://plugins.jenkins.io/pyenv-pipeline) (plugin) | 2.1.1 | |
 | Python 3 (installed on the agent) | 3.7.3 | Make sure that you also install the `pip` package installer.<br/><br/>On Windows systems, also make sure to activate the option **Add Python to PATH** in the installation wizard. |
 | Git (installed on the agent) | 2.22.0 | Required when storing the pipeline definition script in a Git repository. |
@@ -51,7 +52,7 @@ To install the CI/CD probe, download the [CI/CD Probe matching your Platform Ser
 
 To orchestrate the flow of activities for the continuous delivery pipeline you’ll need to create a Jenkins pipeline. The easiest way to do this is by providing a [Jenkinsfile](https://jenkins.io/doc/book/pipeline/jenkinsfile/) text file containing the pipeline definition.
 
-A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins/Windows.Jenkinsfile).
+A template Jenkinsfile for the OutSystems continuous delivery pipeline [is provided here](https://github.com/OutSystems/outsystems-pipeline/tree/master/examples/jenkins).
 
 Create your own copy of the supplied Jenkinsfile template and make sure that the following pipeline **environment variables** are properly set inside the newly created Jenkinsfile:
 
