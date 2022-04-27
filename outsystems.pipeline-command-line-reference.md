@@ -2,6 +2,11 @@ The following reference describes the syntax and arguments of the Python scripts
 
 * [outsystems.pipeline.fetch_lifetime_data](#outsystemspipelinefetch_lifetime_data)
 * [outsystems.pipeline.deploy_latest_tags_to_target_env](#outsystemspipelinedeploy_latest_tags_to_target_env)
+* [outsystems.pipeline.deploy_tags_to_target_env_with_manifest](#outsystemspipelinedeploy_tags_to_target_env_with_manifest)
+* [outsystems.pipeline.deploy_apps_to_target_env_with_airgap](#outsystemspipelinedeploy_apps_to_target_env_with_airgap)
+* [outsystems.pipeline.apply_configuration_values_to_target_env](#outsystemspipelineapply_configuration_values_to_target_env)
+* [outsystems.pipeline.start_deployment_to_target_env](#outsystemspipelinestart_deployment_to_target_env)
+* [outsystems.pipeline.tag_apps_based_on_manifest_data](#outsystemspipelinetag_apps_based_on_manifest_data)
 * [outsystems.pipeline.generate_unit_testing_assembly](#outsystemspipelinegenerate_unit_testing_assembly)
 * [outsystems.pipeline.evaluate_test_results](#outsystemspipelineevaluate_test_results)
 
@@ -43,6 +48,7 @@ fetch_lifetime_data.py [-h] [-a ARTIFACTS]
 * **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**
 
   (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
+
 
 ## outsystems.pipeline.deploy_latest_tags_to_target_env
 
@@ -106,6 +112,74 @@ deploy_latest_tags_to_target_env.py [-h] [-a ARTIFACTS]
 * **-m DEPLOY_MSG, --deploy_msg DEPLOY_MSG**
 
   (Optional) Note to include on the deployment plan. Default: "Automated deploy via OutSystems Pipeline"
+
+## outsystems.pipeline.deploy_tags_to_target_env_with_manifest
+
+Creates and runs a LifeTime deployment plan to deploy a set of applications
+from the source environment to the destination environment.
+
+The deployment plan only includes the tagged versions of the
+applications from the provided Manifest (either as JSON or as file).
+
+```
+deploy_tags_to_target_env_with_manifest.py [-h] [-a ARTIFACTS]
+                                         -u LT_URL
+                                         -t LT_TOKEN
+                                         [-v LT_API_VERSION]
+                                         [-e LT_ENDPOINT]
+                                         -s SOURCE_ENV_LABEL
+                                         -d DESTINATION_ENV_LABEL
+                                         [-i] 
+                                         [-m JSON_MANIFEST]
+                                         [-f MANIFEST_FILE]
+```
+
+### Arguments
+
+* **-h, --help**
+
+  Show this help message and exit.
+
+* **-a ARTIFACTS, --artifacts ARTIFACTS**
+
+  (Optional) Name of the artifacts folder. Default: "Artifacts"
+
+* **-u LT_URL, --lt_url LT_URL**
+
+  URL of the LifeTime environment, without the API endpoint. Example: "https://<lifetime_host>"
+
+* **-t LT_TOKEN, --lt_token LT_TOKEN**
+
+  LifeTime authentication token used in the API requests.
+
+* **-v LT_API_VERSION, --lt_api_version LT_API_VERSION**
+
+  (Optional) LifeTime Deployment API version to use. Use 2 for OutSystems 11 and above and 1 for OutSystems 10. Default: 2
+
+* **-e LT_ENDPOINT, --lt_endpoint LT_ENDPOINT**
+
+  (Optional) Overrides the default LifeTime API endpoint, without the version. Default: "lifetimeapi/rest"
+
+* **-s SOURCE_ENV_LABEL, --source_env_label SOURCE_ENV_LABEL**
+
+  Label, as configured in the manifest, of the source environment where the apps are.
+
+* **-d DESTINATION_ENV_LABEL, --destination_env_label DESTINATION_ENV_LABEL**
+
+  Label, as configured in the manifest, of the destination environment where you want to deploy the apps.
+
+* **-i, --include_test_apps**
+
+  Flag that indicates if applications marked as \"Test Application\" in the manifest are included in the deployment plan.
+
+* **-m JSON_MANIFEST, --trigger_manifest JSON_MANIFEST**
+
+  Manifest artifact (in JSON format) received when the pipeline is triggered. Contains required data used throughout the pipeline execution.
+
+* **-f MANIFEST_FILE, --manifest_file MANIFEST_FILE**
+
+  Manifest file (with JSON format). Contains required data used throughout the pipeline execution.
+
 
 ## outsystems.pipeline.generate_unit_testing_assembly
 
