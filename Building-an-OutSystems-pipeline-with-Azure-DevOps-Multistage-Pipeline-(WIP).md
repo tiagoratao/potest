@@ -42,8 +42,7 @@ From the variable group previously created, select "+ Add" and provide the follo
 
 Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of secret variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
 
-![lifetime-token](https://user-images.githubusercontent.com/50829192/197734133-ca797945-bbfb-40bb-b57a-d996ce26337a.png)
-
+![lifetime-token](https://user-images.githubusercontent.com/50829192/197748659-80d3fd31-5404-40a6-a8ce-386d0f1478ee.png)
 
 #### 1.3. Register environment variables
 
@@ -100,6 +99,8 @@ From the Azure Pipeline Dashboard, navigate to the **Pipelines** tab, under **Pi
 
 Once you have configured the version control system, choose **Existing Azure Pipelines YAML file**, select the template YAML file, and click Continue.
 
+![select-template](https://user-images.githubusercontent.com/50829192/197748915-0e67c4fe-d8cb-4412-81fe-3f312bdb152d.png)
+
 Review Pipeline YAML and click **Save** from the dropdown.
 
 Click the **Edit** button, select **Triggers** from the More actions submenu and rename the pipeline to "&lt;YourProduct&gt;-Pipeline".
@@ -110,14 +111,18 @@ Click the **Edit** button, select **Triggers** from the More actions submenu and
 
 Properties Services allows you to get and set Site Properties, Timers, REST References, and SOAP Reverences from the pipelines.
 
-To install the Properties Services, download the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) and publish it on every environment that you'd like to have this functionality using Service Center. Alternatively, you can install the component directly from the Service Studio interface.<br/>
+To install the Properties Services, download the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) and publish it on every environment that you'd like to have this functionality using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+
+![properties-services](https://user-images.githubusercontent.com/50829192/197749373-9c17ea13-4b29-42ee-a967-1e9c62039ad7.png)
 
 
 #### 3.2 Publish Properties Management in the LifeTime environment (Optional)
 
 Properties Management provides the APIs to externally use the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) component.
 
-To install the Properties Management, download the [Properties Management](https://www.outsystems.com/forge/component-overview/947/properties-management) and publish it on LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.<br/>
+To install the Properties Management, download the [Properties Management](https://www.outsystems.com/forge/component-overview/947/properties-management) and publish it on LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+
+![properties-management](https://user-images.githubusercontent.com/50829192/197749402-35be4c21-76ea-49f1-95e0-05006bc0f2c4.png)
 
 #### 3.3 Publish CI/CD probe in the Regression environment
 
@@ -125,13 +130,15 @@ To retrieve environment-specific information that is required when running the c
 
 To install the CI/CD probe, download the [CI/CD Probe matching your Platform Server version](https://www.outsystems.com/forge/component-versions/6528) and publish it on the Regression environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
+![cicd-probe](https://user-images.githubusercontent.com/50829192/197749434-bc05e62e-624c-4c4b-8d7c-8df6ca357ea0.png)
+
 ### 4. Trigger pipeline execution remotely
 
 The [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/trigger-pipeline) LifeTime plugin available on the OutSystems Forge automatically detects when new versions (tags) are available for a configured subset of LifeTime applications and triggers an associated Azure DevOps pipeline by leveraging the Azure DevOps REST API.
 
 #### 4.1 Install the Trigger Pipeline LifeTime plugin
 
-To install the Trigger Pipeline LifeTime plugin, download the [Trigger Pipeline version 2.4.0](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+To install the Trigger Pipeline LifeTime plugin, download the latest version of the [Trigger Pipeline](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
 #### 4.2 Configure the Trigger Pipeline LifeTime plugin
 
@@ -159,7 +166,7 @@ Access the Site Properties tab and configure the following properties:
 
 After the plugin is successfully published and configured in the LifeTime environment, select **Configure Triggers** from the plugin landing page in LifeTime and configure the following parameters:
 
-* **Source Environment:** _&lt;Select your OutSystems Development environment.&gt;_
+* **Source Environment:** _&lt;Select your OutSystems source environment.&gt;_
 * **Pipeline Server Type:** _Azure DevOps_
 * **Pipeline Server Address:** _&lt;Your Azure Pipeline instance address, including organization and project. For example, `https://dev.azure.com/{organization}/{project}`.&gt;_
 * **Pipeline Server Credentials:** _&lt;Credentials of an Azure user account with enough permissions for running pipeline jobs. You must use a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops) instead of a regular password for this authentication, and we recommended creating a dedicated user for this purpose.&gt;_
@@ -170,9 +177,16 @@ Pipeline triggers can be configured by providing the following data:
 
 * **Pipeline:** _&lt;Unique name that identifies the pipeline in Azure DevOps&gt;_
 * **Pipeline Type:** _&lt;Select YAML for Multistage Pipeline&gt;_
+* **Source Environment:** _&lt;Select your OutSystems source environment.&gt;_
 * **Environment Labels (optional):** _&lt;Define the label assigned to each OutSystems environment along the deployment path&gt;_
 * **Applications:** _&lt;List of LifeTime applications that will trigger the CI/CD pipeline, identifying which ones are Test applications&gt;_
+
+![pipeline-config](https://user-images.githubusercontent.com/50829192/197750065-0b1fed07-0f0e-468b-99e9-4ac0baabad83.png)
 
 After the Trigger Pipeline plugin is properly configured, the dashboard screen will show the list of pipeline triggers, along with the current versions in Development of the LifeTime applications defined for each pipeline scope.  
 
 Once there are new application versions available for triggering a pipeline, a button is shown that allows running the pipeline on-demand without the need to log in to Azure.
+
+![party-up-pipeline-trigger](https://user-images.githubusercontent.com/50829192/197750494-c1fb2810-a0b5-44df-b88f-63a18eb2e75f.png)
+
+
