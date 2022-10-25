@@ -29,8 +29,7 @@ In this guide, we'll create and use a single variable group that will provide al
 
 #### 1.1. Create a variable group
 
-From the Azure Pipelines Dashboard, open the "Library" tab to see a list of existing variable groups for your project and choose "+ Variable group".<br/>
-Enter a name and description for the variable group and make it accessible to any pipeline by setting the option "Allow access to all pipelines".
+From the Azure Pipelines Dashboard, open the "Library" tab to see a list of existing variable groups for your project and choose "+ Variable group".
 
 #### 1.2. Register LifeTime authentication token as a secret variable
 
@@ -43,7 +42,7 @@ From the variable group previously created, select "+ Add" and provide the follo
 
 Click on the "lock" icon at the end of the row to encrypt and securely store the value. (The values of secret variables are stored securely on the server and cannot be viewed by users after they are saved. After being encrypted the values can only be replaced.)
 
-![Add Credentials](images/azure-add-credentials.png)
+![lifetime-token](https://user-images.githubusercontent.com/50829192/197734133-ca797945-bbfb-40bb-b57a-d996ce26337a.png)
 
 
 #### 1.3. Register environment variables
@@ -109,13 +108,15 @@ Click the **Edit** button, select **Triggers** from the More actions submenu and
 
 #### 3.1 Publish Properties Services in all environments (Optional)
 
-Properties Services allows you to get and set Site Properties, Timers, REST References, and SOAP Reverences from the pipelines.<br/>
+Properties Services allows you to get and set Site Properties, Timers, REST References, and SOAP Reverences from the pipelines.
+
 To install the Properties Services, download the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) and publish it on every environment that you'd like to have this functionality using Service Center. Alternatively, you can install the component directly from the Service Studio interface.<br/>
 
 
 #### 3.2 Publish Properties Management in the LifeTime environment (Optional)
 
-Properties Management provides the APIs to externally use the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) component.<br/>
+Properties Management provides the APIs to externally use the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) component.
+
 To install the Properties Management, download the [Properties Management](https://www.outsystems.com/forge/component-overview/947/properties-management) and publish it on LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.<br/>
 
 #### 3.3 Publish CI/CD probe in the Regression environment
