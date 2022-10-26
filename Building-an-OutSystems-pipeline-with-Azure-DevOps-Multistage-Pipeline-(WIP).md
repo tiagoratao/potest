@@ -119,7 +119,7 @@ Properties Services allows you to get and set Site Properties, Timers, REST Refe
 
 To install the Properties Services, download the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) and publish it on every environment that you'd like to have this functionality using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
-![properties-services](https://user-images.githubusercontent.com/50829192/197749373-9c17ea13-4b29-42ee-a967-1e9c62039ad7.png)
+![properties-services](https://user-images.githubusercontent.com/50829192/198004116-85b53dd6-321b-4f11-9b24-b9cf6db67d81.png)
 
 
 #### 4.2 Publish Properties Management in the LifeTime environment (Optional)
@@ -128,7 +128,7 @@ Properties Management provides the APIs to externally use the [Properties Servic
 
 To install the Properties Management, download the [Properties Management](https://www.outsystems.com/forge/component-overview/947/properties-management) and publish it on the LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
-![properties-management](https://user-images.githubusercontent.com/50829192/197749402-35be4c21-76ea-49f1-95e0-05006bc0f2c4.png)
+![properties-management](https://user-images.githubusercontent.com/50829192/198004164-dbca5da4-0751-4a2a-8a85-d77cb58dcc50.png)
 
 #### 4.3 Publish CI/CD probe in the Regression environment
 
@@ -136,7 +136,7 @@ To retrieve environment-specific information that is required when running the c
 
 To install the CI/CD probe, download the [CI/CD Probe matching your Platform Server version](https://www.outsystems.com/forge/component-versions/6528) and publish it on the Regression environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
-![cicd-probe](https://user-images.githubusercontent.com/50829192/197749434-bc05e62e-624c-4c4b-8d7c-8df6ca357ea0.png)
+![cicd-probe](https://user-images.githubusercontent.com/50829192/198004209-7b498134-b634-46c5-a1c1-db8328b608a0.png)
 
 ### 5. Trigger pipeline execution remotely
 
@@ -145,6 +145,8 @@ The [Trigger Pipeline](https://www.outsystems.com/forge/component-overview/5670/
 #### 5.1 Install the Trigger Pipeline LifeTime plugin
 
 To install the Trigger Pipeline LifeTime plugin, download the latest version of the [Trigger Pipeline](https://www.outsystems.com/forge/component-versions/5670) and publish it to your LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
+
+![trigger-pripeline](https://user-images.githubusercontent.com/50829192/198004279-3fe83c71-f759-48ec-a7e0-c38960d9fe0b.png)
 
 #### 5.2 Configure the Trigger Pipeline LifeTime plugin
 
