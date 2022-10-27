@@ -88,7 +88,8 @@ You may additionally add the following configuration values depending on your in
 
 Our current approach is leveraging the Azure Environments capabilities to handle pipeline resources such as approvals, deployment window time, and exclusive locks.
 
-For each _`Environment.*.Key`_ previously added to the variable group, [create an Azure Environment](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#create-an-environment), and ensure that the Azure Environment names match the variable Key values.
+For each OutSystems environment in your delivery pipeline (except Development), [create a matching Azure Environment](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#create-an-environment) and ensure that the Environment name matches the corresponding _`Environment.*.Key`_ variable value.
+
 
 ### 3. Create a Multistage Pipeline
 
@@ -124,7 +125,7 @@ To install the Properties Services, download the [Properties Services](https://w
 
 #### 4.2 Publish Properties Management in the LifeTime environment (Optional)
 
-Properties Management provides the APIs to externally use the [Properties Services](https://www.outsystems.com/forge/component-overview/3966/properties-services) component.
+Properties Management provides the APIs to externally use the Properties Services component.
 
 To install the Properties Management, download the [Properties Management](https://www.outsystems.com/forge/component-overview/947/properties-management) and publish it on the LifeTime environment using Service Center. Alternatively, you can install the component directly from the Service Studio interface.
 
