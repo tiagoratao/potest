@@ -88,7 +88,9 @@ You may additionally add the following configuration values depending on your in
 
 Our current approach is leveraging the Azure Environments capabilities to handle pipeline resources such as approvals, deployment window time, and exclusive locks.
 
-For each OutSystems environment in your delivery pipeline (except Development), [create a matching Azure Environment](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#create-an-environment) and ensure that the Environment name matches the corresponding _`Environment.*.Key`_ variable value.
+For each OutSystems environment in your delivery pipeline (except Development), [create a matching Azure Environment](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#create-an-environment) and ensure that the Environment name matches the value in the corresponding _`Environment.*.Key`_ variable.
+
+Each Azure Environment is associated with a pipeline stage, which references it in the YAML pipeline definition through a [Deployment Job](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/deployment-jobs?view=azure-devops), thus allowing the pipeline to leverage the capabilities of the Azure Environment.
 
 
 ### 3. Create a Multistage Pipeline
