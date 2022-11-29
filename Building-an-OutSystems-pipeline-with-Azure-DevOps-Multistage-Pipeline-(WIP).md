@@ -84,7 +84,7 @@ You may additionally add the following configuration values depending on your in
 | ArchDashboard.Thresholds.SecurityFindingsCount | &lt;Microsoft-hosted agent image&gt; | 10 |
 | ArchDashboard.Thresholds.TechDebtLevel | &lt;Hostname of LifeTime environment&gt; | Medium |
 
-### 2. Create Azure Environments
+### 2. Create Azure DevOps Environments
 
 Our current approach is leveraging the Azure Environments capabilities to handle pipeline resources such as approvals, deployment window time, and exclusive locks.
 
