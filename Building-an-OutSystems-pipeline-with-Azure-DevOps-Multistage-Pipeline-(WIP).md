@@ -86,7 +86,7 @@ You may additionally add the following configuration values depending on your in
 
 ### 2. Create Azure DevOps Environments
 
-Our current approach is leveraging the Azure Environments capabilities to handle pipeline resources such as approvals, deployment window time, and exclusive locks.
+Our current approach is leveraging the [Azure DevOps Environments capabilities](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass) to handle pipeline resources such as approvals, deployment window time, and exclusive locks.
 
 For each OutSystems environment in your delivery pipeline (except Development), [create a matching Azure Environment](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#create-an-environment) and ensure that the Environment name matches the value in the corresponding _`Environment.*.Key`_ variable.
 
