@@ -33,7 +33,7 @@ From the Azure Pipelines Dashboard, open the "Library" tab to see a list of exis
 
 #### 1.2. Register LifeTime authentication token as a secret variable
 
-You need to [create a LifeTime service account and generate an authentication token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_Deployment_API_v2/REST_API_Authentication) to authenticate all requests to the LifeTimeAPI.
+You need to [create a LifeTime service account and generate an authentication token](https://success.outsystems.com/Documentation/11/Reference/OutSystems_APIs/LifeTime_API_v2/REST_API_Authentication#creating-a-service-account) to authenticate all requests to the LifeTimeAPI.
 
 From the variable group previously created, select "+ Add" and provide the following configuration values:
 
